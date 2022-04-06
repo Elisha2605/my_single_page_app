@@ -1,0 +1,71 @@
+% if not is_xhr:
+    % include("_header")
+% end
+
+<main
+  data-spa = "yes"
+  data-spa_url = "/user-tweets/{{user_id}}" 
+  data-spa_title = {{title}} 
+  data-spa_hide = "[data-spa]"
+  data-spa_display = "block"
+>
+
+% # main page
+  % include("_left-side")
+
+    % # center
+    <div class="w-2/4 min-h-screen border-x border-gray-300">
+      
+      % include("_quick-tweet")
+      
+      <!-- CARD -->
+      % for tweet in user_tweets:
+      <div id="user-tweet-post" class="voices mt-4">
+        <div class="p-4 border-t border-slate-200">
+            <div class="flex">
+              <img class="flex-none w-12 h-12 object-cover rounded-full" src="/images/user_profile_pictures/{{tweet['user_profile_picture']}}">
+              <div class="w-full pl-4">
+                
+                <!-- first name - username/ text -->
+                <div id="user-info" class="flex">
+                  <p class="font-bold pr-2">
+                   {{tweet['user_first_name']}} {{tweet['user_last_name']}}
+                  </p>
+                  <p class="font-thin">
+                    {{tweet['user_name']}}
+                  </p>                        
+                </div>
+
+                <div id="tweet-text" class="pt-2">
+                  {{tweet['tweet_text']}}
+                </div>
+                
+                % if 'tweet_image' in tweet:
+                  <div id="tweet-image">
+                    <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80" src="/images/user_content_images/{{tweet["tweet_image"]}}">
+                  </div> 
+                % end
+
+                <div class="flex gap-12 w-10 mt-4 text-lg">
+                    <i class="fa-solid fa-message ml-auto"></i>
+                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-retweet"></i>
+                    <i class="fa-solid fa-share-nodes"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      % end
+      </div>
+    % # end center 
+    
+  % include("_right-side")
+
+% # end page
+
+</main>
+  
+% if not is_xhr:
+  % include("_footer")
+% end

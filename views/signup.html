@@ -1,0 +1,29 @@
+
+    
+    <main>
+        <section>
+            <h1>Signup</h1>
+            <section id="sign-error-msg">
+                % include('errors/signup_error')
+            </section>
+            <form action="/signup" method="POST" enctype="multipart/form-data">
+                <label for="firstname">First name</label><br>
+                <input name="user_first_name" type="text" id="firstname" value="{{user_first_name or '' }}"><br>
+
+                <label for="lastname">Last name</label><br>
+                <input name="user_last_name" type="text" id="lastname" value="{{user_last_name or '' }}"><br>
+
+                <label for="email">Email</label><br>
+                <input name="user_email" type="email" id="email" value="{{user_email or '' }}"><br>
+
+                <label for="password">Password</label><br>
+                <input name="user_password" type="text" id="password"><br>
+
+                <label>Password (min 2 max 50 characters)</label><br><br>
+                <label for="">Add your profile picture</label><br>
+                <input name="user_profile_picture" type="file" ><br><br>
+
+                <button id="signup-btn">Sign Up</button>
+            </form>
+        </section>
+    </main>
