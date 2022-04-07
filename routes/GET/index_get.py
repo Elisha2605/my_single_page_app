@@ -16,6 +16,10 @@ def _(user_id):
     user_name=data.USERS[user_id]['user_name']
     user_profile_picture=data.USERS[user_id]['user_profile_picture']
     
+    for key in data.TWEETS:
+        tweet_id = key
+        print('#'*100)
+        print(tweet_id)
 
         
     is_xhr = True if request.headers.get('spa') else False
@@ -30,8 +34,10 @@ def _(user_id):
         user_profile_picture=user_profile_picture,
 
         users=data.USERS,
-        tweets=data.TWEETS, 
         tabs=data.tabs, 
         trends=data.trends,
         items=data.items,
+        
+        tweet_id=tweet_id,
+        tweets=data.TWEETS, 
         )

@@ -78,15 +78,17 @@ def _(user_id):
         # get user_tweet by ID           
         for key in data.TWEETS: 
             if user_id in data.TWEETS[key]['user_id']:
-                tweet_keys.append(key)
+                tweet_id = key
                 user_tweets.append(data.TWEETS[key])
-                
+       
         #response.content_type = 'application/json; charset=UTF-8'
         is_xhr = True if request.headers.get('spa') else False
         return dict(
                     title="user-account",
                     is_xhr=is_xhr,
                     
+                    tweet_id=tweet_id,
+
                     user_id=user_id, 
                     user_tweets=user_tweets,
                     user_profile_picture=user_profile_picture, 

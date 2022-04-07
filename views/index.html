@@ -1,6 +1,7 @@
 % if not is_xhr:
     % include("_header")
 % end
+
     <main
         data-spa = "yes" 
         data-spa_url = "/{{user_id}}"
@@ -9,14 +10,16 @@
         data-spa_display = "block"
     >
 
-  % include("_main-tweet")
+  % include("_create-tweet")
+  % include("_update-tweet")
   % include("_left-side")
   
     % # center
-      <div class="w-2/4 min-h-screen border-x border-gray-300">
+      <div class="w-2/4 min-h-screen border-x border-gray-300 test">
         % include("_quick-tweet")
           <!-- TWEETS -->
-          <div id="tweet-post" class="voices mt-4"></div>
+          <div id="tweet-post" class="voices mt-4">
+          </div>
       </div>
     % # end center  
   % include("_right-side")

@@ -14,6 +14,10 @@ def _():
 def _():
     return static_file('app.js', root='.')
 ##############################
+@get('/test.js')
+def _():
+    return static_file('test.js', root='.')
+##############################
 @get('/spa.js')
 def _():
     return static_file('spa.js', root='.')

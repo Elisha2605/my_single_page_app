@@ -18,13 +18,13 @@
             </div>
             % end
           </div>
-          <button onclick="toggleTweetModal()" class="mt-8 w-full py-2 text-lg text-white bg-blue1 rounded-full">
+          <button onclick="toggleCreateTweetModal()" class="mt-8 w-full py-3 text-lg text-white bg-blue1 rounded-full">
             Tweet
           </button>
         </div>
         <div class="mt-auto">
           <div class="flex items-center gap-2 px-2 py-3 hover:bg-gray-200 cursor-pointer rounded-full">
-            <img class="userProfile w-12 h-12 rounded-full object-cover flex-none" src="/images/user_profile_pictures/{{user_profile_picture}}">
+            <img class="  w-12 h-12 rounded-full object-cover flex-none" src="/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';" >
             <div class="flex-1 overflow-ellipsis">
               <p>{{user_first_name}}</p>
               <p class="font-thin">{{user_name}}</p>
