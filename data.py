@@ -8,6 +8,7 @@ REGEX_UUID4 = '^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f
 
 USERS = {
     "a5ea9d0c-1295-4a1e-8184-e22e50ec1914": {
+        "user_id": "a5ea9d0c-1295-4a1e-8184-e22e50ec1914",
         "user_first_name": "Aicha",
         "user_last_name": "Haidara",
         "user_name": "@AichaHaidara",
@@ -16,6 +17,7 @@ USERS = {
         "user_profile_picture": "dalmatian.jpeg",
     },
     "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6": {
+        "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6",
         "user_first_name": "Elisha", 
         "user_last_name": "Ngoma",
         "user_name": "@ElishaNgoma",
@@ -33,6 +35,7 @@ TWEET_MAX_LEN = 100
 
 TWEETS= {
     "baa13631-2b37-4e3d-b86c-5be1beea0217" : {
+        "tweet_id": "baa13631-2b37-4e3d-b86c-5be1beea0217",
         "user_id":"a5ea9d0c-1295-4a1e-8184-e22e50ec1914",
         "user_first_name": "Aicha",
         "user_last_name": "Haidara",
@@ -43,6 +46,7 @@ TWEETS= {
         "tweet_date": "",
     }, 
     "cadbbcd7-b569-488c-adbe-adbf4c92b56a": {
+        "tweet_id": "cadbbcd7-b569-488c-adbe-adbf4c92b56a",
         "user_id":"b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6", 
         "user_first_name": "Elisha", 
         "user_last_name": "Ngoma",
@@ -53,6 +57,7 @@ TWEETS= {
         "tweet_date": "",
     },
     "9bbf2704-8377-4981-8b5d-db4ac9062042": {
+        "tweet_id": "9bbf2704-8377-4981-8b5d-db4ac9062042",
         "user_id":"b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6", 
         "user_first_name": "Elisha", 
         "user_last_name": "Ngoma",

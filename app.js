@@ -29,34 +29,34 @@ function toggleUpdateTweetModal(){
 
 
 
-const renderTweets = (post, tweet_id) => {
+const renderTweets = (tweet) => {
     
     output += `
-          <div id="${tweet_id}" class="p-4 border-t border-slate-200">
+          <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
           <div class="flex">
-            <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/${post.user_profile_picture}">
+            <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/${tweet.user_profile_picture}">
             <div class="w-full pl-4">
               <!-- first name - username/ text -->
                 <div id="user-info" class="flex">
                 <p class="font-bold pr-2">
-                      <a href="/user-tweets/${post.user_id}" onclick="spa(); return false">
-                      ${post.user_first_name} ${post.user_last_name}
+                      <a href="/user-tweets/${tweet.user_id}" onclick="spa(); return false">
+                      ${tweet.user_first_name} ${tweet.user_last_name}
                       </a>
                     </p>
                   <p class="font-thin">
-                    ${post.user_name}
+                    ${tweet.user_name}
                   </p>                        
                 </div>
               <div id="tweet-text" class="tweetText pt-2">
-                ${post.tweet_text}
+                ${tweet.tweet_text}
               </div>
               
               <div id="tweet-image">
-                <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/${post.tweet_image}">
+                <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/${tweet.tweet_image}">
               </div>
               <div class="flex gap-12 w-10 mt-4 text-lg">
-                  <i id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer" data-id=${tweet_id}></i>
-                  <i onclick="deleteTweet('${tweet_id}')" class="fas fa-trash ml-auto cursor-pointer"></i>
+                  <i id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer" data-id=${tweet.tweet_id}></i>
+                  <i onclick="deleteTweet('${tweet.tweet_id}')" class="fas fa-trash ml-auto cursor-pointer"></i>
                   <i class="fa-solid fa-message ml-auto"></i>
                   <i class="fa-solid fa-heart"></i>
                   <i class="fa-solid fa-retweet"></i>
@@ -104,17 +104,23 @@ fetch('/tweets')
     .then(res => res.json())
     .then(data => {
         
-          data.tweet_id.forEach(tweet_id => {
-            const post = data.tweets[tweet_id]
-            renderTweets(post, tweet_id) 
-                  
-            
-          })
-      }).catch(error => { 
-          console.log("Server error:", error);
-      })
+      for (let tweet of data.tweets) {
+        renderTweets(tweet)
+      }
+    }).catch(error => { 
+      console.log("Server error:", error);
+})
 
-
+// fetch('/tweets')
+//     .then(res => res.json())
+//     .then(data => {
+        
+//           for (let tweet of data.tweets) {
+//               console.log(tweet.tweet_text)
+//           }
+//       }).catch(error => { 
+//           console.log("Server error:", error);
+// })
 
 // Create - Tweet
 // Method: POST

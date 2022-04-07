@@ -22,10 +22,10 @@ def _():
         return redirect(f"/login?error=user_password&user_email={user_email}")
 
     # Connect to the db
-    for id in data.USERS:
-        user_id = id
-        if request.forms.get("user_email") in data.USERS[id]['user_email']:
-            if request.forms.get("user_password") in data.USERS[id]['user_password']:
+    for key in data.USERS:
+        user_id = key
+        if request.forms.get("user_email") in data.USERS[key]['user_email']:
+            if request.forms.get("user_password") in data.USERS[key]['user_password']:
                 
                 return redirect(f'/{user_id}')
             else: 

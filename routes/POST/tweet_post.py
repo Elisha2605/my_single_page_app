@@ -42,6 +42,7 @@ def _(user_id):
         image = request.files.get('tweet_image')
         if not image:
             data.TWEETS[tweet_id] = {
+                    "tweet_id": tweet_id,
                     'user_id': user_id,
                     'user_first_name': data.USERS[user_id]['user_first_name'],
                     'user_last_name': data.USERS[user_id]['user_last_name'],
@@ -93,6 +94,7 @@ def _(user_id):
             
             if user_id in data.USERS:
                 data.TWEETS[tweet_id] = {
+                    "tweet_id": tweet_id,
                     'user_id': user_id,
                     'user_first_name': data.USERS[user_id]['user_first_name'],
                     'user_last_name': data.USERS[user_id]['user_last_name'],
@@ -111,5 +113,5 @@ def _(user_id):
         response.status = 500
         return {'info': 'Upps... something went wrong'}
 
-    return json.dumps(dict(tweet=data.TWEETS[tweet_id], tweet_id=tweet_id))
+    return json.dumps(dict(tweet=data.TWEETS[tweet_id]))
 

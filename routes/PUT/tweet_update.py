@@ -47,4 +47,4 @@ def _(tweet_id):
         return {'info': 'Upps... something went wrong'}
 
     response.content_type = 'application/json; charset=UTF-8'
-    return json.dumps(dict(tweet=data.TWEETS[tweet_id], tweet_id=tweet_id, tweet_text=data.TWEETS[tweet_id]['tweet_text']))
+    return json.dumps(dict(tweet=data.TWEETS[tweet_id], tweet_text=data.TWEETS[tweet_id]['tweet_text']))

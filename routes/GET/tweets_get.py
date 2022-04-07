@@ -10,16 +10,18 @@ import re
 @view('index')
 def _():
     try:
-        tweet_id = []
+        tweets = []
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
         
+        # tweets
         for key in data.TWEETS:
-            tweet_id.append(key)
-        
+            tweets.append(data.TWEETS[key])
+            print('#'*100)
+            print(tweets)
 
-        response.content_type = 'application/json; charset=UTF-8'
-        return json.dumps(dict(tweets=data.TWEETS, tweet_id=tweet_id))
+        #response.content_type = 'application/json; charset=UTF-8'
+        return json.dumps(dict(tweets=tweets))
 
         
     except Exception as ex:
@@ -42,8 +44,9 @@ def _(tweet_id):
             response.status = 204
             return
         # Succes
+        tweet=data.TWEETS[tweet_id]
         response.content_type = 'application/json; charset=UTF-8'
-        return json.dumps(dict(tweet=data.TWEETS[tweet_id], tweet_id=tweet_id))
+        return json.dumps(dict(tweet=tweet))
         
             
     except Exception as ex:
@@ -55,30 +58,20 @@ def _(tweet_id):
 
 ############## User tweets / GET - ID ##############
 @get('/user-tweets/<user_id>')
-@view('user-account')
+# @view('user-account')
 def _(user_id):
-    user_tweets = []
-    tweet_keys = []
-    user = []
+
     try:
 
-        user_first_name=data.USERS[user_id]['user_first_name']
-        user_last_name=data.USERS[user_id]['user_last_name']
-        user_name=data.USERS[user_id]['user_name']
-        user_profile_picture=data.USERS[user_id]['user_profile_picture']
+        user_tweets = []
         
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
 
-        
-        # get user info      
-        if user_id in data.USERS:
-            user_info = data.USERS[user_id]
 
         # get user_tweet by ID           
         for key in data.TWEETS: 
             if user_id in data.TWEETS[key]['user_id']:
-                tweet_id = key
                 user_tweets.append(data.TWEETS[key])
        
         #response.content_type = 'application/json; charset=UTF-8'
@@ -86,16 +79,9 @@ def _(user_id):
         return dict(
                     title="user-account",
                     is_xhr=is_xhr,
-                    
-                    tweet_id=tweet_id,
 
-                    user_id=user_id, 
                     user_tweets=user_tweets,
-                    user_profile_picture=user_profile_picture, 
-                    user_first_name=user_first_name,
-                    user_last_name=user_last_name,
-                    user_name=user_name,
-                    
+
                     tabs=data.tabs, 
                     trends=data.trends, 
                     items=data.items
