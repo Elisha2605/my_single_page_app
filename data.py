@@ -30,7 +30,8 @@ USERS = {
 ######################## TWEETS ###############################
 
 TWEET_MIN_LEN = 1
-TWEET_MAX_LEN = 100
+TWEET_MAX_LEN = 500
+
 
 
 TWEETS= {

@@ -23,6 +23,9 @@ def _(tweet_id):
         
         tweet_text = request.forms.get('tweet_text').strip()
         tweet_image = request.forms.get('tweet_image')
+
+        print('#'*100)
+        print(tweet_text)
         
         if len(tweet_text) < data.TWEET_MIN_LEN:
             response.status = 400
@@ -39,6 +42,7 @@ def _(tweet_id):
             data.TWEETS[tweet_id]['tweet_image'] = tweet_image
         else:
             data.TWEETS[tweet_id]['tweet_text'] = tweet_text
+           
 
 
     except Exception as ex:

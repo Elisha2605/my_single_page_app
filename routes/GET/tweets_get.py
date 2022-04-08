@@ -4,10 +4,9 @@ import json
 import re
 
 
-
 ##############  TWEETS / GET  #################### 
 @get('/tweets')
-@view('index')
+#@view('index')
 def _():
     try:
         tweets = []
@@ -20,7 +19,7 @@ def _():
             print('#'*100)
             print(tweets)
 
-        #response.content_type = 'application/json; charset=UTF-8'
+        response.content_type = 'application/json; charset=UTF-8'
         return json.dumps(dict(tweets=tweets))
 
         
@@ -58,12 +57,17 @@ def _(tweet_id):
 
 ############## User tweets / GET - ID ##############
 @get('/user-tweets/<user_id>')
-# @view('user-account')
+@view('user-account')
 def _(user_id):
 
     try:
 
         user_tweets = []
+
+        user_first_name=data.USERS[user_id]['user_first_name']
+        user_last_name=data.USERS[user_id]['user_last_name']
+        user_name=data.USERS[user_id]['user_name']
+        user_profile_picture=data.USERS[user_id]['user_profile_picture']
         
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
@@ -79,8 +83,14 @@ def _(user_id):
         return dict(
                     title="user-account",
                     is_xhr=is_xhr,
+                    user_id=user_id,
 
                     user_tweets=user_tweets,
+
+                    user_first_name=user_first_name,
+                    user_last_name=user_last_name,
+                    user_name=user_name,
+                    user_profile_picture=user_profile_picture,
 
                     tabs=data.tabs, 
                     trends=data.trends, 

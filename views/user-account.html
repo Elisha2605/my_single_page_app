@@ -37,7 +37,7 @@
                     {{tweet['user_name']}}
                   </p>                        
                 </div>
-
+                
                 <div id="tweet-text" class="pt-2">
                   {{tweet['tweet_text']}}
                 </div>
@@ -49,8 +49,7 @@
                 % end
 
                 <div class="flex gap-12 w-10 mt-4 text-lg">
-                    <i id="delete-post" onclick="edit('{{tweet_id}}')" class="editBtn fa-solid fa-pen cursor-pointer"></i>
-                    <i onclick="deleteTweet('{{tweet_id}}') " class="fas fa-trash ml-auto cursor-pointer"></i>
+                    
                     <i class="fa-solid fa-message ml-auto"></i>
                     <i class="fa-solid fa-heart"></i>
                     <i class="fa-solid fa-retweet"></i>
