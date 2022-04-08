@@ -14,7 +14,7 @@ def _():
             return {'info': 'No tweets found yet!'}
         
         # tweets
-        for key in data.TWEETS:
+        for key in reversed(list(data.TWEETS.keys())):
             tweets.append(data.TWEETS[key])
             print('#'*100)
             print(tweets)
@@ -74,7 +74,7 @@ def _(user_id):
 
 
         # get user_tweet by ID           
-        for key in data.TWEETS: 
+        for key in reversed(list(data.TWEETS.keys())): 
             if user_id in data.TWEETS[key]['user_id']:
                 user_tweets.append(data.TWEETS[key])
        
