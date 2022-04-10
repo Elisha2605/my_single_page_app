@@ -1,32 +1,18 @@
-% if not is_xhr:
-    % include("_header")
-% end
 
-    <main
-        data-spa = "yes" 
-        data-spa_url = "/{{user_id}}"
-        data-spa_title = {{title}}
-        data-spa_hide = "[data-spa]"
-        data-spa_display = "block"
-    >
+% include("_header")
 
-  % include("_create-tweet")
-  % include("_update-tweet")
-  % include("_left-side")
-  
-    % # center
-      <div class="w-2/4 min-h-screen border-x border-gray-300">
-        % include("_quick-tweet")
-          <!-- TWEETS -->
-          <div id="tweet-post" class="voices mt-4">
-          </div>
-      </div>
-    % # end center  
-  % include("_right-side")
+    % include("_create-tweet")
+    % include("_update-tweet")
+    % include("_left-side")
+    
+      % # center
+        <div class="w-2/4 min-h-screen border-x border-gray-300">
+          % include("_quick-tweet")
+            <!-- TWEETS -->
+            <div id="tweet-post" class="voices mt-4">
+            </div>
+        </div>
+      % # end center  
+    % include("_right-side")
 
-        
-    </main>
-    <script src="validator.js"></script>
-% if not is_xhr:
-    % include("_footer")
-% end
+% include("_footer")

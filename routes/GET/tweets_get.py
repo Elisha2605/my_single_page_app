@@ -60,13 +60,12 @@ def _(tweet_id):
 def _(user_id):
 
     try:
-
-        user_tweets = []
-
         user_first_name=data.USERS[user_id]['user_first_name']
         user_last_name=data.USERS[user_id]['user_last_name']
         user_name=data.USERS[user_id]['user_name']
         user_profile_picture=data.USERS[user_id]['user_profile_picture']
+        
+        user_tweets = []
         
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
@@ -78,10 +77,7 @@ def _(user_id):
                 user_tweets.append(data.TWEETS[key])
        
         #response.content_type = 'application/json; charset=UTF-8'
-        is_xhr = True if request.headers.get('spa') else False
         return dict(
-                    title="user-account",
-                    is_xhr=is_xhr,
                     user_id=user_id,
 
                     user_tweets=user_tweets,
@@ -102,3 +98,10 @@ def _(user_id):
         response.status = 500
         return {'info': 'Upps... something went wrong'}
     
+
+############## ADMIN PAGE / GET ##############
+@get('/admin-page')
+@view('admin')
+def _():
+
+    return 

@@ -11,6 +11,10 @@ const tweetTextElement = document.querySelectorAll('.tweetText');
 const updateSubmitBtn = document.querySelector('#update-submit-btn');
 
 
+
+
+
+
 /////////////////////////////// TWEET OVERLAY //////////////////////////////////////
 function toggleCreateTweetModal(){
     document.querySelector("#createTweetModal").classList.toggle("hidden")
@@ -35,7 +39,7 @@ const renderTweets = (tweet) => {
                     </a>
                   </p>
                 <p class="font-thin">
-                  ${tweet.user_name}
+                  @${tweet.user_name}
                 </p>                        
               </div>
             <div id="tweet-text" class="tweetText pt-2">
@@ -113,7 +117,7 @@ async function createTweet(){
               <!-- first name - username/ text -->
                 <div id="user-info" class="flex">
                     <p class="font-bold pr-2">
-                    <a href="/user-tweets/${tweet.user_id}" onclick="spa(); return false">
+                    <a href="/user-tweets/${tweet.user_id}" return false">
                       ${tweet.user_first_name} ${tweet.user_last_name}
                     </a>
                     </p>

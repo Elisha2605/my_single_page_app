@@ -5,26 +5,15 @@ from bottle import error, get, post, request, response, run, static_file, view
 @error(404)
 def _(error):
   return "Page Not fount"
+
+
 ##############################
 @get('/app.css')
 def _():
     return static_file('app.css', root='.')
-##############################
-@get('/app.js')
-def _():
-    return static_file('app.js', root='.')
-##############################
-@get('/test.js')
-def _():
-    return static_file('test.js', root='.')
-##############################
-@get('/spa.js')
-def _():
-    return static_file('spa.js', root='.')
-##############################
-@get("/validator.js")
-def _():
-  return static_file("validator.js", root=".")
+
+
+
 ##############################
 @get("/images/user_profile_pictures/<image_name>")
 def _(image_name):
@@ -35,6 +24,10 @@ def _(image_name):
   return static_file(image_name, root="./images/user_content_images")
 
 
+#######  STATIC FILES  #######
+@get('/static/<filename>')
+def _(filename):
+    return static_file(filename, root="./static")
 
 
 ##############################

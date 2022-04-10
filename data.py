@@ -11,7 +11,7 @@ USERS = {
         "user_id": "a5ea9d0c-1295-4a1e-8184-e22e50ec1914",
         "user_first_name": "Aicha",
         "user_last_name": "Haidara",
-        "user_name": "@AichaHaidara",
+        "user_name": "AichaHaidara",
         "user_email": "a@a.com", 
         "user_password": "123",
         "user_profile_picture": "dalmatian.jpeg",
@@ -20,11 +20,16 @@ USERS = {
         "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6",
         "user_first_name": "Elisha", 
         "user_last_name": "Ngoma",
-        "user_name": "@ElishaNgoma",
+        "user_name": "ElishaNgoma",
         "user_email": "elisha_ngoma@yahoo.fr", 
         "user_password": "123",
         "user_profile_picture": "elisha.jpg",
     },
+}
+
+ADMIN = {
+    "admin_email": "admin@admin.com",
+    "admin_password": "111"
 }
 
 ######################## TWEETS ###############################
@@ -40,7 +45,7 @@ TWEETS= {
         "user_id":"a5ea9d0c-1295-4a1e-8184-e22e50ec1914",
         "user_first_name": "Aicha",
         "user_last_name": "Haidara",
-        "user_name": "@AichaHaidara",
+        "user_name": "AichaHaidara",
         "user_profile_picture": "dalmatian.jpeg", 
         "tweet_text": "The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work",
         "tweet_image": "cocker.jpeg",
@@ -51,7 +56,7 @@ TWEETS= {
         "user_id":"b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6", 
         "user_first_name": "Elisha", 
         "user_last_name": "Ngoma",
-        "user_name": "@ElishaNgoma",
+        "user_name": "ElishaNgoma",
         "user_profile_picture": "elisha.jpg",
         "tweet_text": "Last year has been the best year for manufacturing jobs and trucking jobs since 1994.",
         "tweet_image": "elisha.jpg",
@@ -62,7 +67,7 @@ TWEETS= {
         "user_id":"b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6", 
         "user_first_name": "Elisha", 
         "user_last_name": "Ngoma",
-        "user_name": "@ElishaNgoma",
+        "user_name": "ElishaNgoma",
         "user_profile_picture": "elisha.jpg",
         "tweet_text": "Adds htmlString in 4 positions see demo. Unlike .innerHTML it never rerenders and destroys the original HTML and references. The only thing.",
         "tweet_image": "dog.jpg",
