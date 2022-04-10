@@ -1,3 +1,4 @@
+from turtle import title
 from bottle import get, response, view, request
 import data
 import json
@@ -16,8 +17,6 @@ def _():
         # tweets
         for key in reversed(list(data.TWEETS.keys())):
             tweets.append(data.TWEETS[key])
-            print('#'*100)
-            print(tweets)
 
         response.content_type = 'application/json; charset=UTF-8'
         return json.dumps(dict(tweets=tweets))
@@ -102,6 +101,4 @@ def _(user_id):
         print(ex)
         response.status = 500
         return {'info': 'Upps... something went wrong'}
-    
-  
     

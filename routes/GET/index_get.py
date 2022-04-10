@@ -1,4 +1,3 @@
-from turtle import title
 from bottle import get, view, request, response
 import data
 
@@ -9,6 +8,7 @@ import data
 @view('index')
 def _(user_id):
 
+    ## info for the home (index)
     user_first_name=data.USERS[user_id]['user_first_name']
     user_last_name=data.USERS[user_id]['user_last_name']
     user_name=data.USERS[user_id]['user_name']
@@ -22,7 +22,7 @@ def _(user_id):
         user_id=user_id,
 
         user_first_name=user_first_name,
-        user_last_name=user_last_name,
+        user_last_name=user_last_name,  
         user_name=user_name,
         user_profile_picture=user_profile_picture,
 
@@ -30,5 +30,4 @@ def _(user_id):
         trends=data.trends,
         items=data.items, 
         )
-
 
