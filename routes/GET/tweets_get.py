@@ -1,25 +1,25 @@
+
 from bottle import get, response, view, request
 import data
 import json
 import re
 
 
-
 ##############  TWEETS / GET  #################### 
 @get('/tweets')
-@view('index')
+#@view('index')
 def _():
     try:
-        tweet_id = []
+        tweets = []
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
         
-        for key in data.TWEETS:
-            tweet_id.append(key)
-        
+        # tweets
+        for key in reversed(list(data.TWEETS.keys())):
+            tweets.append(data.TWEETS[key])
 
         response.content_type = 'application/json; charset=UTF-8'
-        return json.dumps(dict(tweets=data.TWEETS, tweet_id=tweet_id))
+        return json.dumps(dict(tweets=tweets))
 
         
     except Exception as ex:
@@ -42,8 +42,9 @@ def _(tweet_id):
             response.status = 204
             return
         # Succes
+        tweet=data.TWEETS[tweet_id]
         response.content_type = 'application/json; charset=UTF-8'
-        return json.dumps(dict(tweet=data.TWEETS[tweet_id], tweet_id=tweet_id))
+        return json.dumps(dict(tweet=tweet))
         
             
     except Exception as ex:
@@ -54,48 +55,38 @@ def _(tweet_id):
 
 
 ############## User tweets / GET - ID ##############
-@get('/user-tweets/<user_id>')
+@get('/user-account/<user_id>')
 @view('user-account')
 def _(user_id):
-    user_tweets = []
-    tweet_keys = []
-    user = []
-    try:
 
+    try:
         user_first_name=data.USERS[user_id]['user_first_name']
         user_last_name=data.USERS[user_id]['user_last_name']
         user_name=data.USERS[user_id]['user_name']
         user_profile_picture=data.USERS[user_id]['user_profile_picture']
         
+        user_tweets = []
+        
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
 
-        
-        # get user info      
-        if user_id in data.USERS:
-            user_info = data.USERS[user_id]
 
         # get user_tweet by ID           
-        for key in data.TWEETS: 
+        for key in reversed(list(data.TWEETS.keys())): 
             if user_id in data.TWEETS[key]['user_id']:
-                tweet_id = key
                 user_tweets.append(data.TWEETS[key])
        
         #response.content_type = 'application/json; charset=UTF-8'
-        is_xhr = True if request.headers.get('spa') else False
         return dict(
-                    title="user-account",
-                    is_xhr=is_xhr,
-                    
-                    tweet_id=tweet_id,
+                    user_id=user_id,
 
-                    user_id=user_id, 
                     user_tweets=user_tweets,
-                    user_profile_picture=user_profile_picture, 
+
                     user_first_name=user_first_name,
                     user_last_name=user_last_name,
                     user_name=user_name,
-                    
+                    user_profile_picture=user_profile_picture,
+
                     tabs=data.tabs, 
                     trends=data.trends, 
                     items=data.items
@@ -107,5 +98,74 @@ def _(user_id):
         response.status = 500
         return {'info': 'Upps... something went wrong'}
     
-  
+
+
+############## USER TWEETS / GET ##############
+@get('/user-profile/<user_id>')
+@view('user-profile')
+def _(user_id):
+
+    try:
+        user_first_name=data.USERS[user_id]['user_first_name']
+        user_last_name=data.USERS[user_id]['user_last_name']
+        user_name=data.USERS[user_id]['user_name']
+        user_profile_picture=data.USERS[user_id]['user_profile_picture']
+       
+        
+        user_tweets = []
+        
+        if data.TWEETS == {}:
+            return {'info': 'No tweets found yet!'}
+
+
+        # get user_tweet by ID           
+        for key in reversed(list(data.TWEETS.keys())): 
+            if user_id in data.TWEETS[key]['user_id']:
+                user_tweets.append(data.TWEETS[key])
+       
+        #response.content_type = 'application/json; charset=UTF-8'
+        return dict(
+                    user_id=user_id,
+
+                    user_tweets=user_tweets,
+
+                    user_first_name=user_first_name,
+                    user_last_name=user_last_name,
+                    user_name=user_name,
+                    user_profile_picture=user_profile_picture,
+
+                    tabs=data.tabs, 
+                    trends=data.trends, 
+                    items=data.items
+                    ) 
+                
+
+    except Exception as ex:
+        print(ex)
+        response.status = 500
+        return {'info': 'Upps... something went wrong'}
+
+
+############## ADMIN PAGE / GET ##############
+@get('/admin-page')
+@view('admin')
+def _():
+
+    try:
+        tweets = []
+        if data.TWEETS == {}:
+            return {'info': 'No tweets found yet!'}
+        
+        # tweets
+        for key in reversed(list(data.TWEETS.keys())):
+            tweets.append(data.TWEETS[key])
+
+        #response.content_type = 'application/json; charset=UTF-8'
+        return dict(tweets=tweets)
+
+        
+    except Exception as ex:
+        print(ex)
+        response.status = 500
+        return {'info': 'Upps... something went wrong'}
     

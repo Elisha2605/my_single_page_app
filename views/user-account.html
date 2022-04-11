@@ -1,14 +1,8 @@
-% if not is_xhr:
-    % include("_header")
-% end
 
-<main
-  data-spa = "yes"
-  data-spa_url = "/user-tweets/{{user_id}}" 
-  data-spa_title = {{title}} 
-  data-spa_hide = "[data-spa]"
-  data-spa_display = "block"
->
+% include("_header", title="user-profile")
+
+
+
 
   % include("_update-tweet")
   % include("_create-tweet")
@@ -19,9 +13,9 @@
       % include("_quick-tweet")
       
       <!-- CARD -->
-      % for tweet in user_tweets:
-      <div id="user-tweet-post" class="voices mt-4">
-        <div class="p-4 border-t border-slate-200">
+      <div id="user-tweet-post" class="voices mt-4 tweet-post">
+        % for tweet in user_tweets:
+        <div id="{{tweet['tweet_id']}}" class="p-4 border-t border-slate-200">
             <div class="flex">
               % if "user_profile_picture" in tweet:
               <img class="flex-none w-12 h-12 object-cover rounded-full" src="/images/user_profile_pictures/{{tweet['user_profile_picture']}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';">
@@ -34,10 +28,10 @@
                    {{tweet['user_first_name']}} {{tweet['user_last_name']}}
                   </p>
                   <p class="font-thin">
-                    {{tweet['user_name']}}
+                    @{{tweet['user_name']}}
                   </p>                        
                 </div>
-
+                
                 <div id="tweet-text" class="pt-2">
                   {{tweet['tweet_text']}}
                 </div>
@@ -47,28 +41,24 @@
                     <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80" src="/images/user_content_images/{{tweet["tweet_image"]}}">
                   </div> 
                 % end
-
+               
                 <div class="flex gap-12 w-10 mt-4 text-lg">
-                    <i id="delete-post" onclick="edit('{{tweet_id}}')" class="editBtn fa-solid fa-pen cursor-pointer"></i>
-                    <i onclick="deleteTweet('{{tweet_id}}') " class="fas fa-trash ml-auto cursor-pointer"></i>
-                    <i class="fa-solid fa-message ml-auto"></i>
-                    <i class="fa-solid fa-heart"></i>
+                    <i onclick="edit(`{{tweet['tweet_id']}}`)" id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer"></i>
+                    <i onclick="deleteTweet(`{{tweet['tweet_id']}}`)" class="fas fa-trash ml-auto cursor-pointer"></i>
+                    <i class="fa-regular fa-comment ml-auto"></i>
+                    <i class="fa-regular fa-heart"></i>
                     <i class="fa-solid fa-retweet"></i>
                     <i class="fa-solid fa-share-nodes"></i>
                 </div>
+                
               </div>
             </div>
           </div>
+          % end
       </div>
-      % end
       </div>
-    
+  
     
   % include("_right-side")
 
-
-</main>
-  
-% if not is_xhr:
   % include("_footer")
-% end
