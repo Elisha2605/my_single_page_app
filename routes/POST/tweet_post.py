@@ -40,6 +40,10 @@ def _(user_id):
         ##################################################  IMAGE  ######################################################
         # Upload image
         image = request.files.get('tweet_image')
+
+    
+        
+
         if not image:
             data.TWEETS[tweet_id] = {
                     "tweet_id": tweet_id,
@@ -50,7 +54,6 @@ def _(user_id):
                     'user_profile_picture': data.USERS[user_id]['user_profile_picture'],
                     'tweet_text': tweet_text,
                     }
-            
         else:
             file_name, file_extension = os.path.splitext(image.filename)  # .pn .jpeg .zip .mp4
             print(file_name)
@@ -91,7 +94,7 @@ def _(user_id):
             tweet_create_time = str(int(time.time()))
             now = datetime.now()
             tweet_create_date = now.strftime('%Y-%B-%d-%A %H:%M:%S')
-            
+
             if user_id in data.USERS:
                 data.TWEETS[tweet_id] = {
                     "tweet_id": tweet_id,
@@ -101,7 +104,7 @@ def _(user_id):
                     'user_name': data.USERS[user_id]['user_name'],
                     'user_profile_picture': data.USERS[user_id]['user_profile_picture'],
                     'tweet_text': tweet_text,
-                    'tweet_image': image_name
+                    'tweet_image': image_name,
                     }
                 response.status = 201
                 
