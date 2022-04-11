@@ -43,11 +43,10 @@ def _():
 from routes.GET import  index_get
 from routes.GET import tweets_get
 from routes.GET import user_get
-########  POST  #######
-
+########  PUT  #######
+from routes.PUT import tweet_update
 
 ########  UPDATE  #######
-from routes.PUT import tweet_update
 from routes.POST import tweet_post
 
 
@@ -64,6 +63,7 @@ from Auth.GET import login_get
 # POST
 from Auth.POST import signup_post
 from Auth.POST import login_post
+from Auth.POST import logout_post
 
 
 

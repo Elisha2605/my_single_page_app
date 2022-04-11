@@ -1,9 +1,12 @@
-from bottle import post, request, redirect
+from base64 import encode
+from bottle import post, request, response, redirect
 import data
 import uuid
 import re
+import jwt
 
 
+##############  Login  ################
 @post('/login')
 def _():
    
@@ -28,6 +31,24 @@ def _():
         if request.forms.get("user_email") in data.USERS[key]['user_email']:
             if request.forms.get("user_password") in data.USERS[key]['user_password']:
                 
+                session_id = str(uuid.uuid4())
+
+                encode_jwt = jwt.encode({
+                        'user_id': data.USERS[key]['user_id'],
+                        'user_first_name': data.USERS[key]['user_first_name'],
+                        'user_last_name': data.USERS[key]['user_last_name'],
+                        'user_name': data.USERS[key]['user_name'],
+                        'user_profile_picture': data.USERS[key]['user_profile_picture'],
+                        'session_id': session_id
+                    },  
+                        "secret", algorithm="HS256"
+                    )
+                
+
+                data.SESSIONS.append(encode_jwt)
+
+                response.set_cookie('user', encode_jwt)
+
                 return redirect(f'/{user_id}')
             else: 
                 return redirect(f"/login?error=user_password&user_email={user_email}")

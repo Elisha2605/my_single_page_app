@@ -16,7 +16,7 @@ function goToUserTweets(user_id) {
   console.log(user_param_id);
 
   if(user_id === user_param_id) {
-    window.location.href = `/user-account/${user_param_id}`
+    window.location.href = `/user-profile/${user_param_id}`
   } else {
     window.location.href = `/user-profile/${user_id}`
   }
@@ -33,7 +33,7 @@ function toggleUpdateTweetModal(){
 
 
 let output = '';
-const renderTweets = (tweet) => {
+const renderTweets = (tweet, user) => {
   output += `
         <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
           <div class="flex">
@@ -76,9 +76,11 @@ const renderTweets = (tweet) => {
 fetch('/tweets')
     .then(res => res.json())
     .then(data => {
-        
+      
+      user = data.user
+
       for (let tweet of data.tweets) {
-        renderTweets(tweet)
+        renderTweets(tweet, user)
       }
     }).catch(error => { 
       console.log("Server error:", error);

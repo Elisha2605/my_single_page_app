@@ -11,14 +11,14 @@
           <div class="">
 
             <div class="mt-6">
-              <a class="text-xl hover:bg-lighter rounded-full py-3 px-6" href="/user-account/{{user_id}}">
+              <a class="text-xl hover:bg-lighter rounded-full py-3 px-6" href="/user-account/{{user['user_id']}}">
                 <i class="fas fa-home fa-fw"></i>
                 <span class="ml-2">Home</span>
               </a>
             </div>
             
             <div class="mt-6">
-              <a class="text-xl hover:bg-lighter rounded-full py-3 px-6" href="/{{user_id}}">
+              <a class="text-xl hover:bg-lighter rounded-full py-3 px-6" href="/{{user['user_id']}}">
                 <i class="fas fa-hashtag fa-fw"></i>
                 <span class="ml-2">Explore</span>
               </a>
@@ -74,16 +74,21 @@
         </div>
         <div class="mt-auto">
           <div class="flex items-center gap-2 px-2 py-3 hover:bg-gray-200 cursor-pointer rounded-full">
-            <img class="  w-12 h-12 rounded-full object-cover flex-none" src="/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';" >
+            % if "user_profile_picture" in user:
+            <img class="  w-12 h-12 rounded-full object-cover flex-none" src="/images/user_profile_pictures/{{user['user_profile_picture']}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';" >
+            % end
             <div class="flex-1 overflow-ellipsis">
-              <p>{{user_first_name}}</p>
-              <p class="font-thin">{{user_name}}</p>
+              <p>{{user['user_first_name']}}</p>
+              <p class="font-thin">@{{user['user_name']}}</p>
             </div>
             <button class="py-2 px-4 hover:bg-gray-200 rounded-full">
               ...
             </button>
           </div>
         </div>  
+        <div>
+          <a href="/logout">Logout</a>
+        </div>
       </div>
     </div>
     % # end left

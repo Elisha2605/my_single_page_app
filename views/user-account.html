@@ -24,9 +24,11 @@
                 
                 <!-- first name - username/ text -->
                 <div id="user-info" class="flex">
+                  <span onclick="goToUserTweets(`{{tweet['user_id']}}`)" class="cursor-pointer">
                   <p class="font-bold pr-2">
                    {{tweet['user_first_name']}} {{tweet['user_last_name']}}
                   </p>
+                  </span>
                   <p class="font-thin">
                     @{{tweet['user_name']}}
                   </p>                        
