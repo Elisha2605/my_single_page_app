@@ -1,4 +1,3 @@
-from turtle import title
 from bottle import get, response, view, request
 import data
 import json
@@ -55,7 +54,7 @@ def _(tweet_id):
 
 
 ############## User tweets / GET - ID ##############
-@get('/user-tweets/<user_id>')
+@get('/user-account/<user_id>')
 @view('user-account')
 def _(user_id):
 
@@ -98,6 +97,31 @@ def _(user_id):
         response.status = 500
         return {'info': 'Upps... something went wrong'}
     
+
+
+############## USER TWEETS / GET ##############
+@get('/user-profile/<user_id>')
+@view('user-profile')
+def _(user_id):
+
+    user_first_name=data.USERS[user_id]['user_first_name']
+    user_last_name=data.USERS[user_id]['user_last_name']
+    user_name=data.USERS[user_id]['user_name']
+    user_profile_picture=data.USERS[user_id]['user_profile_picture']
+
+
+    return dict(
+            user_id=user_id,
+            user_first_name=user_first_name,
+            user_last_name=user_last_name,
+            user_name=user_name,
+            user_profile_picture=user_profile_picture,
+
+            tabs=data.tabs, 
+            trends=data.trends, 
+            items=data.items
+            ) 
+
 
 ############## ADMIN PAGE / GET ##############
 @get('/admin-page')

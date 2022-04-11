@@ -101,7 +101,7 @@ items = [
 ]
 
 tabs = [
-  {"icon": "fas fa-home fa-fw", "title": "Home", "id":"home"},
+  {"icon": "fas fa-home fa-fw", "title": "Home", "id":"home",},
   {"icon": "fas fa-hashtag fa-fw", "title": "Explore", "id": "explore"},
   {"icon": "far fa-bell fa-fw", "title": "Notifications", "id": "notifications"},
   {"icon": "far fa-envelope fa-fw", "title": "Messages", "id": "messages"},

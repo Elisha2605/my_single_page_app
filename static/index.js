@@ -5,14 +5,22 @@ function _all(q, e=document){return e.querySelectorAll(q)}
 const tweetPostElement = document.querySelector('#tweet-post');
 const addTweetForm = document.querySelector('.creatTweet');
 const btnSubmit = document.querySelector('#submit-main-tweet');
-// const editButton = document.querySelectorAll('.editBtn');
 const textEreaInput = document.querySelector('#text-area-input');
 const tweetTextElement = document.querySelectorAll('.tweetText');
 const updateSubmitBtn = document.querySelector('#update-submit-btn');
 
 
+function goToUserTweets(user_id) {
+  const url = window.location.pathname;
+  const user_param_id = url.substring(url.lastIndexOf('/') + 1);
+  console.log(user_param_id);
 
-
+  if(user_id === user_param_id) {
+    window.location.href = `/user-account/${user_param_id}`
+  } else {
+    window.location.href = `/user-profile/${user_id}`
+  }
+}
 
 
 /////////////////////////////// TWEET OVERLAY //////////////////////////////////////
@@ -28,38 +36,36 @@ let output = '';
 const renderTweets = (tweet) => {
   output += `
         <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
-        <div class="flex">
-          <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/${tweet.user_profile_picture}">
-          <div class="w-full pl-4">
-            <!-- first name - username/ text -->
-              <div id="user-info" class="flex">
-              <p class="font-bold pr-2">
-                    <a href="/user-tweets/${tweet.user_id}" onclick="spa(); return false">
-                    ${tweet.user_first_name} ${tweet.user_last_name}
-                    </a>
-                  </p>
-                <p class="font-thin">
-                  @${tweet.user_name}
-                </p>                        
+          <div class="flex">
+            <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/${tweet.user_profile_picture}">
+            <div class="w-full pl-4">
+              <!-- first name - username/ text -->
+                <div id="user-info" class="flex">
+                <p class="font-bold pr-2">
+                      <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
+                      ${tweet.user_first_name} ${tweet.user_last_name}
+                      </span>
+                    </p>
+                  <p class="font-thin">
+                    @${tweet.user_name}
+                  </p>                        
+                </div>
+              <div id="tweet-text" class="tweetText pt-2">
+                ${tweet.tweet_text}
               </div>
-            <div id="tweet-text" class="tweetText pt-2">
-              ${tweet.tweet_text}
-            </div>
-            
-            <div id="tweet-image">
-              <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/${tweet.tweet_image}">
-            </div>
-            <div class="flex gap-12 w-10 mt-4 text-lg">
-                <i onclick="edit('${tweet.tweet_id}')" id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer" data-id=${tweet.tweet_id}></i>
-                <i onclick="deleteTweet('${tweet.tweet_id}')" class="fas fa-trash ml-auto cursor-pointer"></i>
-                <i class="fa-solid fa-message ml-auto"></i>
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-retweet"></i>
-                <i class="fa-solid fa-share-nodes"></i>
+              
+              <div id="tweet-image">
+                <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/${tweet.tweet_image}">
+              </div>
+              <div class="flex gap-12 w-10 mt-4 text-lg">
+                  <i class="fa-solid fa-message ml-auto"></i>
+                  <i class="fa-solid fa-heart"></i>
+                  <i class="fa-solid fa-retweet"></i>
+                  <i class="fa-solid fa-share-nodes"></i>
+              </div>
             </div>
           </div>
         </div>
-      </div>
     `;
   tweetPostElement.innerHTML = output;
   hideBrokenImage();
@@ -117,9 +123,9 @@ async function createTweet(){
               <!-- first name - username/ text -->
                 <div id="user-info" class="flex">
                     <p class="font-bold pr-2">
-                    <a href="/user-tweets/${tweet.user_id}" return false">
+                    <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
                       ${tweet.user_first_name} ${tweet.user_last_name}
-                    </a>
+                    </span>
                     </p>
                   <p class="font-thin">
                     ${tweet.user_name}
@@ -144,7 +150,8 @@ async function createTweet(){
           </div>
         </div>
       `
-    document.querySelector("#tweet-post").insertAdjacentHTML("afterbegin", tweet_post)
+    document.querySelector(".tweet-post").insertAdjacentHTML("afterbegin", tweet_post)
+    
   
     _one(".createTweet", form).value = ""
     document.querySelector("#createTweetModal").classList.add("hidden")

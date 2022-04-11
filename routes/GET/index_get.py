@@ -14,6 +14,10 @@ def _(user_id):
     user_name=data.USERS[user_id]['user_name']
     user_profile_picture=data.USERS[user_id]['user_profile_picture']
 
+    
+
+    # profile_picture_login
+
         
     is_xhr = True if request.headers.get('spa') else False
     return dict(
