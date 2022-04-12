@@ -10,16 +10,32 @@ const tweetTextElement = document.querySelectorAll('.tweetText');
 const updateSubmitBtn = document.querySelector('#update-submit-btn');
 
 
+
+
 function goToUserTweets(user_id) {
   const url = window.location.pathname;
   const user_param_id = url.substring(url.lastIndexOf('/') + 1);
-  console.log(user_param_id);
+  
+  
 
-  if(user_id === user_param_id) {
-    window.location.href = `/user-profile/${user_param_id}`
-  } else {
-    window.location.href = `/user-profile/${user_id}`
-  }
+  fetch(`/user-profile/${user_id}`)
+  .then(res => res.json())
+  .then(data => {
+
+      const user_first_name = data.user.user_first_name
+      const others_profile_name=data.user_tweets[0].user_first_name
+       
+      if(user_id === user_param_id) {
+        window.location.href = `/user-profile/${user_param_id}/${user_first_name}`
+      } else {
+        window.location.href = `/user-profile/${user_id}/${others_profile_name}`
+      }
+  })
+}
+
+function deleteCookie() {
+  document.cookie = "user=; expires=Thu, 01 jan 1970 00:00:01 GMT;";
+  window.location.href = "/login"
 }
 
 
@@ -30,63 +46,6 @@ function toggleCreateTweetModal(){
 function toggleUpdateTweetModal(){
     document.querySelector("#updateTweetModal").classList.toggle("hidden")
 }
-
-
-let output = '';
-const renderTweets = (tweet, user) => {
-  output += `
-        <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
-          <div class="flex">
-            <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/${tweet.user_profile_picture}">
-            <div class="w-full pl-4">
-              <!-- first name - username/ text -->
-                <div id="user-info" class="flex">
-                <p class="font-bold pr-2">
-                      <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
-                      ${tweet.user_first_name} ${tweet.user_last_name}
-                      </span>
-                    </p>
-                  <p class="font-thin">
-                    @${tweet.user_name}
-                  </p>                        
-                </div>
-              <div id="tweet-text" class="tweetText pt-2">
-                ${tweet.tweet_text}
-              </div>
-              
-              <div id="tweet-image">
-                <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/${tweet.tweet_image}">
-              </div>
-              <div class="flex gap-12 w-10 mt-4 text-lg">
-                  <i class="fa-solid fa-message ml-auto"></i>
-                  <i class="fa-solid fa-heart"></i>
-                  <i class="fa-solid fa-retweet"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-    `;
-  tweetPostElement.innerHTML = output;
-  hideBrokenImage();
-}
-
-
-//-GET-//  -->  /////////// GET TWEETS - FETCH //////////////
-fetch('/tweets')
-    .then(res => res.json())
-    .then(data => {
-      
-      user = data.user
-
-      for (let tweet of data.tweets) {
-        renderTweets(tweet, user)
-      }
-    }).catch(error => { 
-      console.log("Server error:", error);
-})
-
-
 
 
 
@@ -101,12 +60,13 @@ async function createTweet(){
   
     const url = window.location.pathname;
     const user_id = url.substring(url.lastIndexOf('/') + 1);
+    // const user_name = url.substring(url.lastIndexOf(`/${user_id}`) + 1);
   
     const connection = await fetch(`/tweets/${user_id}`, {
       method : "POST",
       body : new FormData(form)
     })
-  
+
     button.disabled = false
     button.innerText = button.dataset.default
   
@@ -130,7 +90,7 @@ async function createTweet(){
                     </span>
                     </p>
                   <p class="font-thin">
-                    ${tweet.user_name}
+                    ${tweet.user_name} - <span class="ml-1 text-xs font-light">${tweet.tweet_date}</span>
                   </p>                        
                 </div>
               <div id="tweet-text" class="pt-2">

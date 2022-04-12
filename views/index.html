@@ -9,8 +9,44 @@
         <div class="w-2/4 min-h-screen border-x border-gray-300">
           % include("_quick-tweet")
             <!-- TWEETS -->
+            % for tweet in tweets:
             <div id="tweet-post" class="voices mt-4 tweet-post">
+              <div id="{{tweet['tweet_id']}}" class="p-4 border-t border-slate-200">
+                <div class="flex">
+                  <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/{{tweet['user_profile_picture']}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';">
+                  <div class="w-full pl-4">
+                    <!-- first name - username/ text -->
+                      <div id="user-info" class="flex">
+                      <p class="font-bold pr-2">
+                            <span onclick="goToUserTweets(`{{tweet['user_id']}}`)" class="cursor-pointer">
+                              {{tweet['user_first_name']}} {{tweet['user_last_name']}}
+                            </span>
+                          </p>
+                        <p class="font-thin">
+                          @{{tweet['user_name']}} - <span class="ml-1 text-xs font-light">{{tweet['tweet_date']}}</span>
+                        </p>                        
+                      </div>
+                    <div id="tweet-text" class="tweetText pt-2">
+                      {{tweet['tweet_text']}}
+                    </div>
+                    
+                    % if 'tweet_image' in tweet:
+                    <div id="tweet-image">
+                      <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/{{tweet["tweet_image"]}}">
+                    </div>
+                    % end
+                    <div class="flex gap-12 w-10 mt-4 text-lg">
+                        <i class="fa-solid fa-message ml-auto"></i>
+                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-retweet"></i>
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
             </div>
+            % end
         </div>
       % # end center  
     % include("_right-side")

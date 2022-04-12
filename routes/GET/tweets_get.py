@@ -106,9 +106,9 @@ def _(user_id):
 
 
 ############## USER TWEETS / GET ##############
-@get('/user-profile/<user_id>')
+@get('/user-profile/<user_id>/<user_name>')
 @view('user-profile')
-def _(user_id):
+def _(user_id, user_name):
 
     try:
 
@@ -126,6 +126,7 @@ def _(user_id):
         user_last_name=data.USERS[user_id]['user_last_name']
         user_name=data.USERS[user_id]['user_name']
         user_profile_picture=data.USERS[user_id]['user_profile_picture']
+        user_joined_date=data.USERS[user_id]['user_joined_date']
        
         
         user_tweets = []
@@ -149,6 +150,7 @@ def _(user_id):
                     user_last_name=user_last_name,
                     user_name=user_name,
                     user_profile_picture=user_profile_picture,
+                    user_joined_date=user_joined_date,
 
                     tabs=data.tabs, 
                     trends=data.trends, 
@@ -163,6 +165,43 @@ def _(user_id):
         response.status = 500
         return {'info': 'Upps... something went wrong'}
 
+############## USER tweets API / GET ##############
+
+@get('/user-profile/<user_id>')
+def _(user_id):
+
+    try:
+
+        # decode session
+        user_session_jwt = request.get_cookie('user')
+
+        for session in data.SESSIONS:
+            if session == user_session_jwt:
+                user = jwt.decode(session, "secret", algorithms=["HS256"])
+       
+        
+        user_tweets = []
+        
+        if data.TWEETS == {}:
+            return {'info': 'No tweets found yet!'}
+
+
+        # get user_tweet by ID           
+        for key in reversed(list(data.TWEETS.keys())): 
+            if user_id in data.TWEETS[key]['user_id']:
+                user_tweets.append(data.TWEETS[key])
+       
+        #response.content_type = 'application/json; charset=UTF-8'
+        return dict(
+                    user_tweets=user_tweets,
+                    user=user
+                    ) 
+                
+
+    except Exception as ex:
+        print(ex)
+        response.status = 500
+        return {'info': 'Upps... something went wrong'}
 
 ############## ADMIN PAGE / GET ##############
 @get('/admin-page')

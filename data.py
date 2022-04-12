@@ -19,6 +19,7 @@ USERS = {
         "user_email": "a@a.com", 
         "user_password": "123",
         "user_profile_picture": "dalmatian.jpeg",
+        "user_joined_date": "January 2018"
     },
     "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6": {
         "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6",
@@ -28,6 +29,7 @@ USERS = {
         "user_email": "elisha_ngoma@yahoo.fr", 
         "user_password": "123",
         "user_profile_picture": "elisha.jpg",
+        "user_joined_date": "October 2019"
     },
 }
 
@@ -53,7 +55,7 @@ TWEETS= {
         "user_profile_picture": "dalmatian.jpeg", 
         "tweet_text": "The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work",
         "tweet_image": "cocker.jpeg",
-        "tweet_date": "",
+        "tweet_date": "Feb 01. 00:23",
     }, 
     "cadbbcd7-b569-488c-adbe-adbf4c92b56a": {
         "tweet_id": "cadbbcd7-b569-488c-adbe-adbf4c92b56a",
@@ -64,7 +66,7 @@ TWEETS= {
         "user_profile_picture": "elisha.jpg",
         "tweet_text": "Last year has been the best year for manufacturing jobs and trucking jobs since 1994.",
         "tweet_image": "elisha.jpg",
-        "tweet_date": "",
+        "tweet_date": "Jun 05. 16:23",
     },
     "9bbf2704-8377-4981-8b5d-db4ac9062042": {
         "tweet_id": "9bbf2704-8377-4981-8b5d-db4ac9062042",
@@ -75,7 +77,7 @@ TWEETS= {
         "user_profile_picture": "elisha.jpg",
         "tweet_text": "Adds htmlString in 4 positions see demo. Unlike .innerHTML it never rerenders and destroys the original HTML and references. The only thing.",
         "tweet_image": "dog.jpg",
-        "tweet_date": "",
+        "tweet_date": "Mar 01. 12:53",
     },
 }
 

@@ -1,3 +1,4 @@
+from attr import define
 from bottle import get, view, request, response, redirect
 import data
 import jwt
@@ -21,7 +22,15 @@ def _(user_id):
                 user = jwt.decode(session, "secret", algorithms=["HS256"])
             
         if not user_id in user['user_id']:
-            return 
+            return redirect('/login')
+
+        tweets = []
+        if data.TWEETS == {}:
+            return {'info': 'No tweets found yet!'}
+        
+        # tweets
+        for key in reversed(list(data.TWEETS.keys())):
+            tweets.append(data.TWEETS[key])
 
 
         ## info for the home (index)
@@ -29,7 +38,7 @@ def _(user_id):
         user_last_name=data.USERS[user_id]['user_last_name']
         user_name=data.USERS[user_id]['user_name']
         user_profile_picture=data.USERS[user_id]['user_profile_picture']
-
+        
         
 
         # profile_picture_login
@@ -52,7 +61,8 @@ def _(user_id):
             items=data.items, 
 
 
-            user=user
+            user=user,
+            tweets=tweets
             )
 
     except Exception as ex:

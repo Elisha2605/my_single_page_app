@@ -53,7 +53,7 @@
             </div>
 
             <div class="mt-6">
-              <a class="text-xl hover:bg-lighter rounded-full py-3 px-6" href="/user-profile/{{user_id}}">
+              <a class="text-xl hover:bg-lighter rounded-full py-3 px-6" href="/user-profile/{{user_id}}/{{user['user_first_name']}}">
                 <i class="far fa-user fa-fw"></i>
                 <span class="ml-2">Profile</span>
               </a>
@@ -87,7 +87,7 @@
           </div>
         </div>  
         <div>
-          <a href="/logout">Logout</a>
+          <a onclick="window.location.her='/login'" id="logoutBtn" href="/logout">Logout</a>
         </div>
       </div>
     </div>

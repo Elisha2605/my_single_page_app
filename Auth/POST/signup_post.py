@@ -5,6 +5,7 @@ import re
 import os
 import imghdr
 import json
+from datetime import datetime
 
 ##############  Signup  ################
 @post('/signup')
@@ -44,15 +45,20 @@ def _():
  ##################################################  IMAGE ######################################################
   # Upload image
     image = request.files.get('user_profile_picture')
+
+    now = datetime.now()
+    user_joined_date = now.strftime('%B %Y')
+
     if not image:
        data.USERS[user_id] = {
             "user_id": user_id,
             "user_first_name": user_first_name,
             "user_last_name": user_last_name,
-            "user_name": f'@{user_first_name}{user_last_name}',
+            "user_name": f'{user_first_name}{user_last_name}',
             "user_email": user_email, 
             "user_password":user_password,
             "user_profile_picture": "",
+            "user_joined_date": user_joined_date
         }
     else:
         file_name, file_extension = os.path.splitext(image.filename)  # .pn .jpeg .zip .mp4
@@ -82,11 +88,11 @@ def _():
             "user_id": user_id,
             "user_first_name": user_first_name,
             "user_last_name": user_last_name,
-            "user_name": f'@{user_first_name}{user_last_name}',
+            "user_name": f'{user_first_name}{user_last_name}',
             "user_email": user_email, 
             "user_password":user_password,
             "user_profile_picture": image_name,
-
+            "user_joined_date": user_joined_date
         }
 
 
