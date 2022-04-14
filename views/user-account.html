@@ -1,7 +1,11 @@
+% if not is_fetch:
+  % include("_header")
+% end
 
-% include("_header", title="user-profile")
-
-
+<main
+  data-spa_url="/"
+  data-spa_title="{{title}}"
+>
 
 
   % include("_update-tweet")
@@ -59,6 +63,8 @@
       </div>
   
     
-  % include("_right-side")
+    </main>
 
+% if not is_fetch:
   % include("_footer")
+% end

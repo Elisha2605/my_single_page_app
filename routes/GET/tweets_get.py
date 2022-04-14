@@ -77,7 +77,11 @@ def _(user_id):
                 user_tweets.append(data.TWEETS[key])
        
         #response.content_type = 'application/json; charset=UTF-8'
+        is_fetch = True if request.headers.get('From-Fetch') else False
         return dict(
+                    is_fetch=is_fetch,
+                    title="User Account",
+
                     user_id=user_id,
 
                     user_tweets=user_tweets,
@@ -124,7 +128,11 @@ def _(user_id):
                 user_tweets.append(data.TWEETS[key])
        
         #response.content_type = 'application/json; charset=UTF-8'
+        is_fetch = True if request.headers.get('From-Fetch') else False
         return dict(
+                    is_fetch=is_fetch,
+                    title="User profile",
+
                     user_id=user_id,
 
                     user_tweets=user_tweets,

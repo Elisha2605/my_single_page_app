@@ -19,10 +19,11 @@ def _(user_id):
     # profile_picture_login
 
         
-    is_xhr = True if request.headers.get('spa') else False
+    is_fetch = True if request.headers.get('From-Fetch') else False
     return dict(
-        is_xhr=is_xhr,
         title="Twitter",
+        is_fetch=is_fetch,
+
         user_id=user_id,
 
         user_first_name=user_first_name,

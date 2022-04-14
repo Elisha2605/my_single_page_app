@@ -11,9 +11,10 @@ def _(error):
 @get('/app.css')
 def _():
     return static_file('app.css', root='.')
-
-
-
+##############################
+@get("/spa.js")
+def _():
+  return static_file("spa.js", root=".")
 ##############################
 @get("/images/user_profile_pictures/<image_name>")
 def _(image_name):

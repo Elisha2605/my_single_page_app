@@ -1,6 +1,11 @@
+% if not is_fetch:
+  % include("_header")
+% end
 
-% include("_header", title="Home")
-
+<main
+  data-spa_url="/"
+  data-spa_title="{{title}}"
+>
     % include("_create-tweet")
     % include("_update-tweet")
     % include("_left-side")
@@ -15,4 +20,8 @@
       % # end center  
     % include("_right-side")
 
-% include("_footer")
+</main>
+
+% if not is_fetch:
+  % include("_footer")
+% end
