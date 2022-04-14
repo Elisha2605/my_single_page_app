@@ -14,7 +14,9 @@ def _(user_id):
     user_name=data.USERS[user_id]['user_name']
     user_profile_picture=data.USERS[user_id]['user_profile_picture']
 
-    
+    tweets=[]
+    for key in reversed(list(data.TWEETS.keys())): 
+        tweets.append(data.TWEETS[key])    
 
     # profile_picture_login
 
@@ -30,6 +32,8 @@ def _(user_id):
         user_last_name=user_last_name,  
         user_name=user_name,
         user_profile_picture=user_profile_picture,
+
+        tweets=tweets,
 
         tabs=data.tabs, 
         trends=data.trends,

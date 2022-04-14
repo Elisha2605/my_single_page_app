@@ -32,57 +32,57 @@ function toggleUpdateTweetModal(){
 }
 
 
-let output = '';
-const renderTweets = (tweet) => {
-  output += `
-        <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
-          <div class="flex">
-            <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/${tweet.user_profile_picture}">
-            <div class="w-full pl-4">
-              <!-- first name - username/ text -->
-                <div id="user-info" class="flex">
-                <p class="font-bold pr-2">
-                      <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
-                      ${tweet.user_first_name} ${tweet.user_last_name}
-                      </span>
-                    </p>
-                  <p class="font-thin">
-                    @${tweet.user_name}
-                  </p>                        
-                </div>
-              <div id="tweet-text" class="tweetText pt-2">
-                ${tweet.tweet_text}
-              </div>
+// let output = '';
+// const renderTweets = (tweet) => {
+//   output += `
+//         <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
+//           <div class="flex">
+//             <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/images/user_profile_pictures/${tweet.user_profile_picture}">
+//             <div class="w-full pl-4">
+//               <!-- first name - username/ text -->
+//                 <div id="user-info" class="flex">
+//                 <p class="font-bold pr-2">
+//                       <span onclick="goToUserTweets('${tweet.user_id}');" class="cursor-pointer">
+//                       ${tweet.user_first_name} ${tweet.user_last_name}
+//                       </span>
+//                     </p>
+//                   <p class="font-thin">
+//                     @${tweet.user_name}
+//                   </p>                        
+//                 </div>
+//               <div id="tweet-text" class="tweetText pt-2">
+//                 ${tweet.tweet_text}
+//               </div>
               
-              <div id="tweet-image">
-                <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/${tweet.tweet_image}">
-              </div>
-              <div class="flex gap-12 w-10 mt-4 text-lg">
-                  <i class="fa-solid fa-message ml-auto"></i>
-                  <i class="fa-solid fa-heart"></i>
-                  <i class="fa-solid fa-retweet"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-    `;
-  tweetPostElement.innerHTML = output;
-  hideBrokenImage();
-}
+//               <div id="tweet-image">
+//                 <img class="mt-2 w-full object-cover h-80 tweetImg" src="/images/user_content_images/${tweet.tweet_image}">
+//               </div>
+//               <div class="flex gap-12 w-10 mt-4 text-lg">
+//                   <i class="fa-solid fa-message ml-auto"></i>
+//                   <i class="fa-solid fa-heart"></i>
+//                   <i class="fa-solid fa-retweet"></i>
+//                   <i class="fa-solid fa-share-nodes"></i>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//     `;
+//   tweetPostElement.innerHTML = output;
+//   hideBrokenImage();
+// }
 
 
-//-GET-//  -->  /////////// GET TWEETS - FETCH //////////////
-fetch('/tweets')
-    .then(res => res.json())
-    .then(data => {
+// //-GET-//  -->  /////////// GET TWEETS - FETCH //////////////
+// fetch('/tweets')
+//     .then(res => res.json())
+//     .then(data => {
         
-      for (let tweet of data.tweets) {
-        renderTweets(tweet)
-      }
-    }).catch(error => { 
-      console.log("Server error:", error);
-})
+//       for (let tweet of data.tweets) {
+//         renderTweets(tweet)
+//       }
+//     }).catch(error => { 
+//       console.log("Server error:", error);
+// })
 
 
 
