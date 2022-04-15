@@ -13,7 +13,6 @@ const updateSubmitBtn = document.querySelector('#update-submit-btn');
 function goToUserTweets(user_id) {
   const url = window.location.pathname;
   const user_param_id = url.substring(url.lastIndexOf('/') + 1);
-  console.log(user_param_id);
 
   if(user_id === user_param_id) {
     window.location.href = `/user-account/${user_param_id}`
