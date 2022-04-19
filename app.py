@@ -12,6 +12,10 @@ def _(error):
 def _():
     return static_file('app.css', root='.')
 ##############################
+@get('/index.css')
+def _():
+    return static_file('index.css', root='.')
+##############################
 @get("/spa.js")
 def _():
   return static_file("spa.js", root=".")
