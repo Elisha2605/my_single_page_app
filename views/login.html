@@ -1,5 +1,5 @@
 % if not is_fetch:
-  % include("_index-header")
+  % include("templates/_index-header")
 % end
 
 <div class="spa-modal-overlay">
@@ -14,6 +14,7 @@
     <form action="/login" method="POST">
         <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
             <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">  
+                <!-- <a href="/" onclick="spa(this); return false" class=" absolute text-inherit text-2xl ml-72 text-black">✖</a> -->
                 <div class="mx-auto max-w-md">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/800px-Twitter-logo.svg.png" class="h-8 mx-auto" alt="" />
                 
@@ -42,5 +43,5 @@
 </div>
 
 % if not is_fetch:
-  % include("_index-footer")
+  % include("templates/_index-footer")
 % end

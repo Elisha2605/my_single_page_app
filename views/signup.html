@@ -1,5 +1,5 @@
 % if not is_fetch:
-  % include("_index-header")
+  % include("templates/_index-header")
 % end
 
     <div class="spa-modal-overlay">
@@ -16,7 +16,7 @@
                     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
                         
                         <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
-                            <a href="/" onclick="spa(this); return false">✖</a>
+                            <!-- <a href="/" onclick="spa(this); return false" class=" absolute text-inherit text-2xl ml-80 text-black">✖</a> -->
                             <div class="mx-auto max-w-md">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/800px-Twitter-logo.svg.png" class="h-8 mx-auto" alt="" />
                             
@@ -39,8 +39,26 @@
                                 </div>
                                 <div class="-mt-4 text-xs">
                                     <label class="text-blue1">Password (min 2 max 50 characters)</label><br><br>
-                                    <label for="">Add your profile picture</label><br>
-                                    <input name="user_profile_picture" type="file" ><br><br>
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-96">
+                                          <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Upload your profile picture</label>
+                                          <input name="user_profile_picture" class="form-control
+                                          block
+                                          w-full
+                                          px-2
+                                          py-1
+                                          text-sm
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileSm" type="file">
+                                        </div>
+                                      </div>
                                 </div>
                                 </div> 
                                 <div class="pb-4">
@@ -56,6 +74,6 @@
     </div>
     
 % if not is_fetch:
-  % include("_index-footer")
+  % include("templates/_index-footer")
 % end
 

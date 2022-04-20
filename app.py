@@ -1,77 +1,65 @@
-from turtle import title
-from bottle import error, get, post, request, response, run, static_file, view
-
-##############################
-@error(404)
-def _(error):
-  return "Page Not fount"
-
-
-##############################
-@get('/app.css')
-def _():
-    return static_file('app.css', root='.')
-##############################
-@get('/index.css')
-def _():
-    return static_file('index.css', root='.')
-##############################
-@get("/spa.js")
-def _():
-  return static_file("spa.js", root=".")
-##############################
-@get("/images/user_profile_pictures/<image_name>")
-def _(image_name):
-  return static_file(image_name, root="./images/user_profile_pictures")
-##############################
-@get("/images/user_content_images/<image_name>")
-def _(image_name):
-  return static_file(image_name, root="./images/user_content_images")
-
-
-#######  STATIC FILES  #######
-@get('/static/<filename>')
-def _(filename):
-    return static_file(filename, root="./static")
-
-
-##############################
-@get('/')
-@view('index')
-def _():
-    is_xhr = True if request.headers.get('spa') else False
-    return dict(title="APP", is_xhr=is_xhr)
-
-##############################
-
-########  GET  ########
-from routes.GET import index
-from routes.GET import  home
-from routes.GET import tweets_get
-from routes.GET import user_get
-########  POST  #######
-
-
-########  UPDATE  #######
-from routes.PUT import tweet_update
-from routes.POST import tweet_post
-
-
-########  DELETE  #######
-from routes.DELETE import tweet_delete
-
-
+from bottle import error, default_app, get, run, static_file, view
 
 
 ########  AUTH  #######
-# GET
-from Auth.GET import signup_get
-from Auth.GET import login_get
-# POST
-from Auth.POST import signup_post
-from Auth.POST import login_post
+from Auth.GET import (
+    signup_get,
+    login_get
+)
+
+from Auth.POST import (
+    signup_post,
+    login_post
+)
+
+########  ROUTES  #######
+from routes import (
+    index,
+    home,
+    tweets_get,
+    user_account,
+    user_profile,
+    admin
+)
+########  APIs  #######
+from api.TWEETS import (
+    tweets_api_get,
+    tweet_api_delete,
+    tweet_api_post,
+    tweet_api_update
+)
+from api.USERS import (
+    user_api_get   
+)
+
+
+
+#######  STATIC FILES  #######
+@get('/app.css')
+def _():
+    return static_file('app.css', root='.')
+
+@get('/static/<file_name:path>')
+def _(file_name):
+    return static_file(file_name, root="./static")
+
+#######  404  #######
+@error(404)
+@view('404')
+def _(error):
+    print(error)
+    return 
+
+
 
 
 
 ##########################################################################################
-run(host='127.0.0.1', port=8080, reloader=True, debug=True, server='paste')
+try:
+  # Production
+  import production
+
+  application = default_app
+except:
+  # Developement
+  run(host='127.0.0.1', port=8080, reloader=True, debug=True, server='paste')
