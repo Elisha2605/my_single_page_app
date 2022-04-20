@@ -13,6 +13,7 @@ const updateSubmitBtn = document.querySelector('#update-submit-btn');
 function goToUserTweets(user_id) {
   const url = window.location.pathname;
   const user_param_id = url.substring(url.lastIndexOf('/') + 1);
+  console.log(user_param_id);
 
   if(user_id === user_param_id) {
     window.location.href = `/user-account/${user_param_id}`
@@ -41,7 +42,7 @@ function toggleUpdateTweetModal(){
 //               <!-- first name - username/ text -->
 //                 <div id="user-info" class="flex">
 //                 <p class="font-bold pr-2">
-//                       <span onclick="goToUserTweets('${tweet.user_id}');" class="cursor-pointer">
+//                       <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
 //                       ${tweet.user_first_name} ${tweet.user_last_name}
 //                       </span>
 //                     </p>
@@ -81,6 +82,7 @@ function toggleUpdateTweetModal(){
 //       }
 //     }).catch(error => { 
 //       console.log("Server error:", error);
+      
 // })
 
 
@@ -150,29 +152,31 @@ async function createTweet(){
         </div>
       `
     document.querySelector(".tweet-post").insertAdjacentHTML("afterbegin", tweet_post)
-    
-  
+
     _one(".createTweet", form).value = ""
+    
     document.querySelector("#createTweetModal").classList.add("hidden")
-  
     hideBrokenImage();
 }
 
 
 //-PUT-//  -->  /////////// UPDATE TWEET - AJAX //////////////
 function edit(tweet_id) {
-    const tweetID = document.querySelector(`[id='${tweet_id}']`)
-    const id = tweetID.id
-    const tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
-    toggleUpdateTweetModal()
+  const tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
+  const editForm = document.querySelector('#edit-form')
+  editForm.setAttribute('onsubmit', `edit('${tweet_id}')`)
+  toggleUpdateTweetModal()
+  
+    console.log(tweetText.innerText);
+    
     textEreaInput.value = tweetText.innerText
 
     if (updateSubmitBtn) {
         updateSubmitBtn.addEventListener('click', (e) => {
-          
+          e.preventDefault()
           $.ajax({
             type: 'PUT',
-            url:    `/tweets/${id}`,
+            url:    `/tweets/${tweet_id}`,
             contentType: 'application/json',
             data:   {tweet_text: textEreaInput.value},
             complete: function(response) {
@@ -183,7 +187,6 @@ function edit(tweet_id) {
           document.querySelector("#updateTweetModal").classList.add("hidden")     
         })
     } 
-
 }
 
 //-DELETE-//  -->  /////////// DELETE TWEET //////////////

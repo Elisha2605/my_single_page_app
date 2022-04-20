@@ -7,7 +7,7 @@ import re
 
 ##############  TWEETS / GET  #################### 
 @get('/tweets')
-#@view('index')
+@view('home')
 def _():
     try:
         tweets = []

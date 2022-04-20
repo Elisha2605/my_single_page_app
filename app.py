@@ -45,7 +45,8 @@ def _():
 ##############################
 
 ########  GET  ########
-from routes.GET import  index_get
+from routes.GET import index
+from routes.GET import  home
 from routes.GET import tweets_get
 from routes.GET import user_get
 ########  POST  #######

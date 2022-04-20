@@ -5,7 +5,7 @@ import data
 
 ##############  Home  ################
 @get('/<user_id>')
-@view('index')
+@view('home')
 def _(user_id):
 
     ## info for the home (index)
@@ -17,7 +17,7 @@ def _(user_id):
     tweets=[]
     for key in reversed(list(data.TWEETS.keys())): 
         tweets.append(data.TWEETS[key])    
-
+        tweet_id=data.TWEETS[key]
     # profile_picture_login
 
         
@@ -25,6 +25,7 @@ def _(user_id):
     return dict(
         title="Twitter",
         is_fetch=is_fetch,
+        tweet_id=tweet_id,
 
         user_id=user_id,
 

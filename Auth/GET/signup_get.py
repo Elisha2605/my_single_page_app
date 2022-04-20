@@ -14,7 +14,12 @@ def _():
     user_email_exists = request.params.get('user_email_exists')
     user_password = request.params.get('user_password')
 
+    is_fetch = True if request.headers.get('From-Fetch') else False
+    page_title = "signup"
     return dict(
+        title=page_title,
+        is_fetch=is_fetch,
+
         error = error,
         user_first_name=user_first_name,
         user_last_name=user_last_name,
