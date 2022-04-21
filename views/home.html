@@ -1,4 +1,4 @@
-% if not is_fetch:
+    % if not is_fetch:
   % include("templates/_header")
 % end
 
@@ -46,7 +46,7 @@
                 % end
                
                 <div class="flex gap-12 w-10 mt-4 text-lg">
-                    <i onclick="edit(`{{tweet['tweet_id']}}`)" id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer"></i>
+                    <i onclick="openEditForm(`{{tweet['tweet_id']}}`)" id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer"></i>
                     <i onclick="deleteTweet(`{{tweet['tweet_id']}}`)" class="fas fa-trash ml-auto cursor-pointer"></i>
                     <i class="fa-regular fa-comment ml-auto"></i>
                     <i class="fa-regular fa-heart"></i>
