@@ -1,0 +1,168 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Open+Sans:wght@400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,800;1,100&display=swap');
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: #15202b;
+    overflow-y: hidden;
+}
+.showcase img{
+    float: left;
+    width: 54%;
+    height: 93vh;
+}
+
+.fa-twitter {
+    margin-left: 15px;
+}
+
+.left {
+    float: left;
+    width: 40%;
+    padding: 70px 30px;
+}
+.left i {
+    color: #fff;
+}
+.left h1{
+    margin-top: 45px;
+    text-align: left;
+    font-size: 67px;
+    font-weight: 900;
+    word-spacing: 4px;
+    color: #fff;
+    font-family: 'lato', sans-serif;
+    white-space: inherit;
+    margin-left: 15px;
+}
+.left h2 {
+    margin-top: 25px;
+    padding-bottom: 30px;
+    align-items: flex-start;
+    font-size: 35px;
+    word-spacing: 4px;
+    color: #fff;
+    font-family: 'lato', sans-serif;
+    white-space: inherit;
+    margin-left: 15px;
+}
+.sign-up {
+    float: left;
+    display: inline-block;
+    width: 70%;
+    padding: 13px;
+}
+
+
+.sign-up a {
+    padding: 13px 100px;
+    height: 3.2rem;
+    border: 0;
+    background-color: #1da1f2;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    display: block;
+    font-family: 'lato', sans-serif;
+    
+}
+
+.sign-up a:hover {
+    background-color: #0475ba;
+    transition: .15s ease-in-out;
+}
+.log-in {
+    float: left;
+    display: inline-block;
+    width: 70%;
+    padding: 10px;
+}
+.log-in a {
+    padding: 13px 100px;
+    height: 3.2rem;
+    border: 0;
+    background-color: #15202b;
+    border: 1px solid #1da1f2;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    display: block;
+    font-family: 'lato', sans-serif;
+}
+.log-in a:hover {
+    background-color: #1c293d;
+    transition: .15s ease-in-out;
+}
+.message {
+    margin-top: -15px;
+    float: left;
+    width: 55%;
+    padding: 10px;
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    color: rgb(147, 153, 158);
+}
+.message span {
+    color: #1da1f2;   
+}
+.message span:hover {
+    text-decoration: underline; 
+    cursor: pointer;
+}
+.spa-modal-overlay {
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+.spa-modal-close-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.footer {
+    display: flex;
+    justify-content: space-around;
+    float: left;
+    width: 100%;
+    margin-top: -7px;
+}
+.footer ul {
+    list-style: none;
+}
+.footer li {
+    display: inline-block;
+    padding: 4px;
+    margin: 2px;
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+}
+.footer a {
+    text-decoration: none;
+    color: rgb(147, 153, 158);
+    width: 100%;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.footer p {
+    margin-top: 0;
+    font-size: 13px;
+    text-align: center;
+    color: rgb(147, 153, 158);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}

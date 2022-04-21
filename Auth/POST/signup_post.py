@@ -8,7 +8,6 @@ import json
 
 @post('/signup')
 def _():
-
     # VALIDATION
     if not request.forms.get('user_first_name'):
         return redirect('/signup?error=user_first_name')
@@ -41,14 +40,14 @@ def _():
         return redirect(f'/signup?error=user_password&user_first_name={user_first_name}&user_last_name={user_last_name}&user_email={user_email}') 
 
  ##################################################  IMAGE ######################################################
-  # Upload image
+     # Tweet without image
     image = request.files.get('user_profile_picture')
     if not image:
        data.USERS[user_id] = {
             "user_id": user_id,
             "user_first_name": user_first_name,
             "user_last_name": user_last_name,
-            "user_name": f'@{user_first_name}{user_last_name}',
+            "user_name": f'{user_first_name}{user_last_name}',
             "user_email": user_email, 
             "user_password":user_password,
             "user_profile_picture": "",
@@ -70,27 +69,34 @@ def _():
         image_name = f'{image_id}{file_extension}'
 
         # Save the image
-        image.save(f'images/user_profile_pictures/{image_name}')
+        image_path = f'static/images/user_profile_pictures/{image_name}'
+        image.save(image_path)
 
         # Converting the image to json object - str
         json.dumps(str(image_name))
 
-########################################################################################################
+        imghdr_extension = imghdr.what(image_path)
 
+        if file_extension != f".{imghdr_extension}":
+            os.remove(image_path)
+            response.status = 400
+            return {"info: Invalid image format"}
+            
+
+        # Converting the image to json object - str
+        
+
+########################################################################################################
+        # Tweet with image
         data.USERS[user_id] = {
             "user_id": user_id,
             "user_first_name": user_first_name,
             "user_last_name": user_last_name,
-            "user_name": f'@{user_first_name}{user_last_name}',
+            "user_name": f'{user_first_name}{user_last_name}',
             "user_email": user_email, 
             "user_password":user_password,
             "user_profile_picture": image_name,
-
         }
 
-
-    # Connect to the db
-    # Insert the users in the table
-    # response.status = 200
-
+    response.status = 200
     return redirect('/login')

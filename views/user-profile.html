@@ -1,9 +1,16 @@
-% include("_header", title="user-profile")
+% if not is_fetch:
+  % include("templates/_header")
+% end
+
+<main
+  data-spa_url="/user-profile/{{user_id}}"
+  data-spa_title="{{title}}"
+>
 
 
-  % include("_update-tweet")
-  % include("_create-tweet")
-  % include("_left-side")
+  % include("templates/_update-tweet")
+  % include("templates/_create-tweet")
+  % include("templates/_left-side")
 
 
 
@@ -15,7 +22,7 @@
     </div>
     <div class="flex h-56 bg-slate-400">
       <div class="my-36 mx-4">
-        <img class="flex-none w-40 h-40 object-cover rounded-full border-4 border-white" src="/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';">
+        <img class="flex-none w-40 h-40 object-cover rounded-full border-4 border-white" src="/static/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
       </div>  
     </div>
     <div class="h-56"> 
@@ -33,7 +40,7 @@
       <div id="{{tweet['tweet_id']}}" class="p-4 border-t border-slate-200">
           <div class="flex">
             % if "user_profile_picture" in tweet:
-            <img class="flex-none w-12 h-12 object-cover rounded-full" src="/images/user_profile_pictures/{{tweet['user_profile_picture']}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';">
+            <img class="flex-none w-12 h-12 object-cover rounded-full" src="/static/images/user_profile_pictures/{{tweet['user_profile_picture']}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
             % end
             <div class="w-full pl-4">
               
@@ -53,7 +60,7 @@
               
               % if 'tweet_image' in tweet:
                 <div id="tweet-image">
-                  <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80" src="/images/user_content_images/{{tweet["tweet_image"]}}">
+                  <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80" src="/static/images/user_content_images/{{tweet["tweet_image"]}}">
                 </div> 
               % end
              
@@ -71,6 +78,10 @@
     </div>
     </div>
 
-  % include("_right-side")
+  % include("templates/_right-side")
 
-% include("_footer")
+</main>
+
+% if not is_fetch:
+  % include("templates/_footer")
+% end

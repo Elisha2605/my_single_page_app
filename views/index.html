@@ -1,18 +1,53 @@
+% if not is_fetch:
+  % include("templates/_index-header")
+% end
 
-% include("_header", title="Home")
+    <main
+    data-spa_url="/"
+    data-spa_title="{{title}}"
+    >
 
-    % include("_create-tweet")
-    % include("_update-tweet")
-    % include("_left-side")
-    
-      % # center
-        <div class="w-2/4 min-h-screen border-x border-gray-300">
-          % include("_quick-tweet")
-            <!-- TWEETS -->
-            <div id="tweet-post" class="voices mt-4 tweet-post">
+        <div class="showcase">
+            <img src="/static/images/user_content_images/cover.png" alt="">
+        </div>
+        <div class="left">
+            <i class="fa fa-twitter fa-3x"></i>
+            <h1>Happening now</h1>
+            <h2>Join Twitter today.</h2>
+            <div class="sign-up">
+                <a href="/signup" onclick="spa(this); return false">Sign up</a>
+            </div>
+            <div class="log-in">
+                <a href="/login" onclick="spa(this); return false">Log in</a>
+            </div>
+            <div class="message">
+                <p>By singing up, you agree to the <span>Terms of Service</span> and <span>Privacy Policy</span>, including <span>Cookie Use</span></p>
             </div>
         </div>
-      % # end center  
-    % include("_right-side")
+        <div class="footer">
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Help center</a></li>
+                <li><a href="#">Terms of service</a></li>
+                <li><a href="#">Privacy policy</a></li>
+                <li><a href="#">Cooki policy</a></li>
+                <li><a href="#">Ads info</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Status</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Brand resources</a></li>
+                <li><a href="#">Adverstising</a></li>
+                <li><a href="#">Marketing</a></li>
+                <li><a href="#">Twitter for Business</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Directory</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Settings</a></li>
+                <p>&copy; 2022 Twitter, Inc.</p>
+            </ul>
+        </div>
 
-% include("_footer")
+    </main>
+% if not is_fetch:
+  % include("templates/_index-footer")
+% end

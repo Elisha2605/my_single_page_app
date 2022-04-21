@@ -6,24 +6,34 @@ import data
 @get('/signup')
 @view('signup')
 def _():
-    
-    error = request.params.get('error')
-    user_first_name = request.params.get('user_first_name')
-    user_last_name = request.params.get('user_last_name')
-    user_email = request.params.get('user_email')
-    user_email_exists = request.params.get('user_email_exists')
-    user_password = request.params.get('user_password')
+    try:
+        error = request.params.get('error')
+        user_first_name = request.params.get('user_first_name')
+        user_last_name = request.params.get('user_last_name')
+        user_email = request.params.get('user_email')
+        user_email_exists = request.params.get('user_email_exists')
+        user_password = request.params.get('user_password')
 
-    return dict(
-        error = error,
-        user_first_name=user_first_name,
-        user_last_name=user_last_name,
-        user_email=user_email,
-        user_email_exists=user_email_exists,
-        user_password=user_password
-    )
+        is_fetch = True if request.headers.get('From-Fetch') else False
+        page_title = "signup"
+        return dict(
+            title=page_title,
+            is_fetch=is_fetch,
 
-#### test router ###
+            error = error,
+            user_first_name=user_first_name,
+            user_last_name=user_last_name,
+            user_email=user_email,
+            user_email_exists=user_email_exists,
+            user_password=user_password
+        )
+    except Exception as ex:
+        print(ex)
+        response.status = 500
+        return {'info': 'Upps... something went wrong'}
+
+
+#### test router ####
 @get('/users')
 def _():
 

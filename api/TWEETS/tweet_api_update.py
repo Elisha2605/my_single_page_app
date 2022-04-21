@@ -5,7 +5,7 @@ import json
 
 
 ##############  TWEETS/<ID> / PUT  ################
-@put('/tweets/<tweet_id>')
+@put('/api-tweets/<tweet_id>')
 def _(tweet_id):
     try: 
         # Validate id
@@ -25,6 +25,7 @@ def _(tweet_id):
         tweet_image = request.forms.get('tweet_image')
 
         print('#'*100)
+        print(tweet_id)
         print(tweet_text)
         
         if len(tweet_text) < data.TWEET_MIN_LEN:

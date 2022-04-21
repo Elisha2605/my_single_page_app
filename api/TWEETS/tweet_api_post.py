@@ -11,7 +11,7 @@ import re
 
 
 ##############  TWEETS with and without image / POST  ################
-@post('/tweets/<user_id>')
+@post('/api-tweets/<user_id>')
 def _(user_id):
 
     try:
@@ -71,21 +71,22 @@ def _(user_id):
             image_name = f'{image_id}{file_extension}'
 
             # Save the image
-            image.save(f'images/user_content_images/{image_name}')
+            image_path = f'static/images/user_content_images/{image_name}'
+            image.save(image_path)
 
             # Converting the image to json object - str
             json.dumps(str(image_name))
 
             # Make sure that the image is actually a valid image
             # by reading its mime type
-            print("imghdr.what", imghdr.what(f"images/user_content_images/{image_name}"))   # imghdr.what png
+            print("imghdr.what", imghdr.what(image_path))   # imghdr.what png
             print("file_extension", file_extension)                     # file_extension .png
-            imghdr_extension = imghdr.what(f"images/user_content_images/{image_name}")
+            imghdr_extension = imghdr.what(image_path)
             
             if file_extension != f".{imghdr_extension}":
                 print("mmm... suspicious ... it is not really an image")
                 # remove the invalid image from the folder
-                os.remove(f"images/{image_name}")
+                os.remove(image_path)
                 return "mmm... got you! It was not an image"
 
             ########################################################################################################
@@ -117,4 +118,3 @@ def _(user_id):
         return {'info': 'Upps... something went wrong'}
 
     return json.dumps(dict(tweet=data.TWEETS[tweet_id]))
-

@@ -3,10 +3,8 @@ import data
 import re
 
 
-
-
 ##############  TWEETS/<ID> / DELETE  ################
-@delete('/tweets/<tweet_id>')
+@delete('/api-tweets/<tweet_id>')
 def _(tweet_id):
     try:
         if not re.match(data.REGEX_UUID4, tweet_id):
@@ -17,6 +15,7 @@ def _(tweet_id):
             return
         
         data.TWEETS.pop(tweet_id)
+        response.status = 200
         return {'info': "tweet deleted"}
     except Exception as ex:
         print(ex)

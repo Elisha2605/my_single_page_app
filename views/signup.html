@@ -1,29 +1,79 @@
+% if not is_fetch:
+  % include("templates/_index-header")
+% end
 
-    
-    <main>
-        <section>
-            <h1>Signup</h1>
+    <div class="spa-modal-overlay">
+        <a href="/" class="spa-modal-close-layer" onclick="spa(this); return false"></a>
+        <main 
+            class="modal"
+            data-spa_modal
+            data-spa_url="/signup"
+            data-spa_title={{title}}
+        >
+
             <section id="sign-error-msg">
-                % include('errors/_signup-error')
+                <form action="/signup" method="POST" enctype="multipart/form-data">
+                    <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
+                        
+                        <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+                            <!-- <a href="/" onclick="spa(this); return false" class=" absolute text-inherit text-2xl ml-80 text-black">✖</a> -->
+                            <div class="mx-auto max-w-md">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/800px-Twitter-logo.svg.png" class="h-8 mx-auto" alt="" />
+                            
+                                <h2 class="p-4 text-4xl -mx-4 font-bold">Create your account</h2>
+                                <section class="text-red-500">
+                                    % include('errors/_signup-error')
+                                </section>
+                                <div class="flex flex-col gap-6 mt-4"> 
+                                <div>
+                                    <input name="user_first_name" type="text" id="firstname" value="{{user_first_name or '' }}" class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" placeholder="First name" />
+                                </div>
+                                <div>
+                                    <input name="user_last_name" type="text" id="lastname" value="{{user_last_name or '' }}" class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" placeholder="Last name" />
+                                </div>
+                                <div>
+                                    <input name="user_email" type="email" id="email" value="{{user_email or '' }}" class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" placeholder="Email" />
+                                </div>
+                                <div>
+                                    <input name="user_password" type="text" id="password" class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" placeholder="Password" />
+                                </div>
+                                <div class="-mt-4 text-xs">
+                                    <label class="text-blue1">Password (min 2 max 50 characters)</label><br><br>
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-96">
+                                          <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Upload your profile picture</label>
+                                          <input name="user_profile_picture" class="form-control
+                                          block
+                                          w-full
+                                          px-2
+                                          py-1
+                                          text-sm
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileSm" type="file">
+                                        </div>
+                                      </div>
+                                </div>
+                                </div> 
+                                <div class="pb-4">
+                                    <button type="submit" class="h-12 w-full mt-2 bg-blue1 rounded-3xl px-4 py-2 text-log text-white tracking-wide font-semibold font-sans">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </section>
-            <form action="/signup" method="POST" enctype="multipart/form-data">
-                <label for="firstname">First name</label><br>
-                <input name="user_first_name" type="text" id="firstname" value="{{user_first_name or '' }}"><br>
 
-                <label for="lastname">Last name</label><br>
-                <input name="user_last_name" type="text" id="lastname" value="{{user_last_name or '' }}"><br>
+        </main>
+    </div>
+    
+% if not is_fetch:
+  % include("templates/_index-footer")
+% end
 
-                <label for="email">Email</label><br>
-                <input name="user_email" type="email" id="email" value="{{user_email or '' }}"><br>
-
-                <label for="password">Password</label><br>
-                <input name="user_password" type="text" id="password"><br>
-
-                <label>Password (min 2 max 50 characters)</label><br><br>
-                <label for="">Add your profile picture</label><br>
-                <input name="user_profile_picture" type="file" ><br><br>
-
-                <button id="signup-btn">Sign Up</button>
-            </form>
-        </section>
-    </main>
