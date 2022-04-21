@@ -49,6 +49,7 @@ TWEETS= {
         "user_profile_picture": "dalmatian.jpeg", 
         "tweet_text": "The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work",
         "tweet_image": "cocker.jpeg",
+        "tweet_count": "",
         "tweet_date": "",
     }, 
     "cadbbcd7-b569-488c-adbe-adbf4c92b56a": {
@@ -74,8 +75,6 @@ TWEETS= {
         "tweet_date": "",
     },
 }
-
-
 
 ######################## ICONS ###############################
 

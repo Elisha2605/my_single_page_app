@@ -25,6 +25,14 @@ def _(user_id):
         for key in reversed(list(data.TWEETS.keys())): 
             if user_id in data.TWEETS[key]['user_id']:
                 user_tweets.append(data.TWEETS[key])
+        
+        # user tweet count
+        tweet_count = 0
+        for key in data.TWEETS:
+            if user_id in data.TWEETS[key]['user_id']:
+                tweet_count += 1
+        print('#'*100)
+        print(tweet_count)
        
         #response.content_type = 'application/json; charset=UTF-8'
         is_fetch = True if request.headers.get('From-Fetch') else False
@@ -35,6 +43,7 @@ def _(user_id):
                     user_id=user_id,
 
                     user_tweets=user_tweets,
+                    tweet_count=tweet_count,
 
                     user_first_name=user_first_name,
                     user_last_name=user_last_name,

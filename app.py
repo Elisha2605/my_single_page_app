@@ -26,7 +26,7 @@ from api.TWEETS import (
     tweets_api_get,
     tweet_api_delete,
     tweet_api_post,
-    tweet_api_update
+    tweet_api_update,
 )
 from api.USERS import (
     user_api_get   
