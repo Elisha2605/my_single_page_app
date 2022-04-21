@@ -1,3 +1,6 @@
+import time
+from datetime import datetime
+
 ######################## REGEX ###############################
 REGEX_EMAIL = '^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
 
@@ -5,6 +8,8 @@ REGEX_EMAIL = '^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[
 REGEX_UUID4 = '^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
 
 ######################## USERS ###############################
+now = datetime.now()
+SIGNUP_DATE = now.strftime('%B %Y')
 
 USERS = {
     "a5ea9d0c-1295-4a1e-8184-e22e50ec1914": {
@@ -15,6 +20,7 @@ USERS = {
         "user_email": "a@a.com", 
         "user_password": "123",
         "user_profile_picture": "dalmatian.jpeg",
+        "user_signup_date": "January 2014"
     },
     "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6": {
         "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6",
@@ -24,6 +30,7 @@ USERS = {
         "user_email": "elisha_ngoma@yahoo.fr", 
         "user_password": "123",
         "user_profile_picture": "elisha.jpg",
+        "user_signup_date": "October 2016"
     },
 }
 
@@ -37,7 +44,8 @@ ADMIN = {
 TWEET_MIN_LEN = 1
 TWEET_MAX_LEN = 500
 
-
+now = datetime.now()
+TWEET_TIME = now.strftime('%b %d. %H:%M')
 
 TWEETS= {
     "baa13631-2b37-4e3d-b86c-5be1beea0217" : {
@@ -49,8 +57,7 @@ TWEETS= {
         "user_profile_picture": "dalmatian.jpeg", 
         "tweet_text": "The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work",
         "tweet_image": "cocker.jpeg",
-        "tweet_count": "",
-        "tweet_date": "",
+        "tweet_time": "Jan 04. 17.15",
     }, 
     "cadbbcd7-b569-488c-adbe-adbf4c92b56a": {
         "tweet_id": "cadbbcd7-b569-488c-adbe-adbf4c92b56a",
@@ -61,7 +68,7 @@ TWEETS= {
         "user_profile_picture": "elisha.jpg",
         "tweet_text": "Last year has been the best year for manufacturing jobs and trucking jobs since 1994.",
         "tweet_image": "elisha.jpg",
-        "tweet_date": "",
+        "tweet_time": "Mar 29. 20.30",
     },
     "9bbf2704-8377-4981-8b5d-db4ac9062042": {
         "tweet_id": "9bbf2704-8377-4981-8b5d-db4ac9062042",
@@ -72,7 +79,7 @@ TWEETS= {
         "user_profile_picture": "elisha.jpg",
         "tweet_text": "Adds htmlString in 4 positions see demo. Unlike .innerHTML it never rerenders and destroys the original HTML and references. The only thing.",
         "tweet_image": "dog.jpg",
-        "tweet_date": "",
+        "tweet_time": "Feb 05. 12.01",
     },
 }
 
@@ -94,9 +101,10 @@ tweets = [
 ]
 
 items = [
-  {"img":"bbc.png", "title":"BBC News", "user_name":"bbcworld"},
-  {"img":"biden.jpg", "title":"Joe Biden", "user_name":"joebiden"},
-  {"img":"harris.jpg", "title":"Vice President", "user_name":"vp"},
+  {"img":"elisha.jpg", "title":"BBC News", "user_name":"bbcworld"},
+  {"img":"dalmatian.jpeg", "title":"Joe Biden", "user_name":"joebiden"},
+  {"img":"elisha.jpg", "title":"Vice President", "user_name":"vp"},
+  {"img":"elisha.jpg", "title":"Vice President", "user_name":"vp"},
 ]
 
 tabs = [
@@ -121,5 +129,4 @@ trends = [
   {"category": "Pop", "title": "Blue Ivy", "tweets_counter": "40k"},
   {"category": "Trending in US", "title": "Denim Day", "tweets_counter": "40k"},
   {"category": "Ukraine", "title": "Ukraine", "tweets_counter": "20k"},
-  {"category": "Russia", "title": "Russia", "tweets_counter": "10k"},
 ]

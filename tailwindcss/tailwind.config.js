@@ -1,6 +1,10 @@
 module.exports = {
   mode : "JIT",
-  purge : ["../views/*.html"],
+  purge : [
+    "../views/*.html",
+    "../views/errors/*.html",
+    "../views/templates/*.html"
+    ],
   content: [],
   theme: {
     extend: {

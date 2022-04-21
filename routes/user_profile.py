@@ -13,6 +13,7 @@ def _(user_id):
         user_last_name=data.USERS[user_id]['user_last_name']
         user_name=data.USERS[user_id]['user_name']
         user_profile_picture=data.USERS[user_id]['user_profile_picture']
+        user_singup_date=data.USERS[user_id]['user_signup_date']
        
         
         user_tweets = []
@@ -49,6 +50,7 @@ def _(user_id):
                     user_last_name=user_last_name,
                     user_name=user_name,
                     user_profile_picture=user_profile_picture,
+                    user_singup_date=user_singup_date,
 
                     tabs=data.tabs, 
                     trends=data.trends, 

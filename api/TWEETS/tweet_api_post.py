@@ -5,7 +5,6 @@ import uuid
 import time
 from datetime import datetime
 import os
-import base64
 import imghdr
 import re
 
@@ -41,9 +40,7 @@ def _(user_id):
         # Upload image
         image = request.files.get('tweet_image')
 
-    
-        
-
+        # tweet without image
         if not image:
             data.TWEETS[tweet_id] = {
                     "tweet_id": tweet_id,
@@ -53,6 +50,7 @@ def _(user_id):
                     'user_name': data.USERS[user_id]['user_name'],
                     'user_profile_picture': data.USERS[user_id]['user_profile_picture'],
                     'tweet_text': tweet_text,
+                    'tweet_time': data.TWEET_TIME
                     }
         else:
             file_name, file_extension = os.path.splitext(image.filename)  # .pn .jpeg .zip .mp4
@@ -91,11 +89,7 @@ def _(user_id):
 
             ########################################################################################################
 
-            # Create tweet
-            tweet_create_time = str(int(time.time()))
-            now = datetime.now()
-            tweet_create_date = now.strftime('%Y-%B-%d-%A %H:%M:%S')
-
+            # tweet with image
             if user_id in data.USERS:
                 data.TWEETS[tweet_id] = {
                     "tweet_id": tweet_id,
@@ -106,6 +100,7 @@ def _(user_id):
                     'user_profile_picture': data.USERS[user_id]['user_profile_picture'],
                     'tweet_text': tweet_text,
                     'tweet_image': image_name,
+                    'tweet_time': data.TWEET_TIME
                     }
                 response.status = 201
                 

@@ -18,7 +18,7 @@
     
     <div class="pl-7 pt-3">
       <p class="font-bold text-2xl">{{user_first_name}}</p>
-      <p class="font-thin">{{tweet_count}} Tweets</p>
+      <p class="font-thin mb-2">{{tweet_count}} Tweets</p>
     </div>
     <div class="flex h-56 bg-slate-400">
       <div class="my-36 mx-4">
@@ -29,7 +29,7 @@
         <div class="absolute mt-24 mx-4">
           <h1 class="font-bold text-2xl">{{user_first_name}}</h1>
           <h1 class="font-light">@{{user_name}}</h1>
-          <div><i class="fas fa-calendar"></i><span class="font-light mx-1">Joined October 2018</span></div>
+          <div><i class="fas fa-calendar"></i><span class="font-light mx-1">Joined {{user_singup_date}}</span></div>
           <span class="pr-4  font-light">0 Following</span><span class="font-light">0 Followers</span>
         </div>
     </div>
@@ -50,7 +50,7 @@
                  {{tweet['user_first_name']}} {{tweet['user_last_name']}}
                 </p>
                 <p class="font-thin">
-                  @{{tweet['user_name']}}
+                  @{{tweet['user_name']}} - <span class="ml-1 text-xs font-light">{{tweet['tweet_time']}}</span>
                 </p>                        
               </div>
               

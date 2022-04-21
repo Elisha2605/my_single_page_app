@@ -45,8 +45,6 @@ def _(user_id):
                     tabs=data.tabs, 
                     trends=data.trends, 
                     items=data.items,
-
-                    count=count
                     ) 
                 
 

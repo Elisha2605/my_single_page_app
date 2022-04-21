@@ -76,7 +76,7 @@ async function createTweet(){
                     </span>
                     </p>
                   <p class="font-thin">
-                    @${tweet.user_name}
+                    @${tweet.user_name} - <span class="ml-1 text-xs font-light">${tweet['tweet_time']}</span>
                   </p>                        
                 </div>
               <div id="tweet-text" class="pt-2">
@@ -106,6 +106,8 @@ async function createTweet(){
     hideBrokenImage();
 }
 
+
+
 function openEditForm(tweet_id) {
   console.log(tweet_id);
   // console.log(textEreaInput);
@@ -118,7 +120,7 @@ function openEditForm(tweet_id) {
 }
 
 
-// UPDATE test
+//-UPDATE-//  -->  /////////// UPDATE TWEET //////////////
 async function edit(tweet_id) {
   let tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
   console.log(tweet_id);
@@ -140,36 +142,6 @@ async function edit(tweet_id) {
   
 }
 
-
-// //-PUT-//  -->  /////////// UPDATE TWEET - AJAX //////////////
-// function edit(tweet_id) {
-//   const tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
-//   const editForm = document.querySelector('#edit-form')
-//   editForm.setAttribute('onsubmit', `edit('${tweet_id}')`)
-//   toggleUpdateTweetModal()
-  
-//     console.log(tweetText.innerText);
-    
-//     textEreaInput.value = tweetText.innerText
-
-//     if (updateSubmitBtn) {
-//         updateSubmitBtn.addEventListener('click', (e) => {
-//           e.preventDefault()
-//           $.ajax({
-//             type: 'PUT',
-//             url:    `/api-tweets/${tweet_id}`,
-//             contentType: 'application/json',
-//             data:   {tweet_text: textEreaInput.value},
-//             complete: function(response) {
-//                 console.log(response);
-//             }
-//           });
-//           tweetText.innerText = textEreaInput.value
-//           document.querySelector("#updateTweetModal").classList.add("hidden")     
-//         })
-//     } 
-// }
-
 //-DELETE-//  -->  /////////// DELETE TWEET //////////////
 async function deleteTweet(tweet_id) {
     const connection = await fetch(`/api-tweets/${tweet_id}`, {
@@ -182,6 +154,10 @@ async function deleteTweet(tweet_id) {
 
     document.querySelector(`[id='${tweet_id}']`).remove()
 }
+
+
+
+
 
 
 
