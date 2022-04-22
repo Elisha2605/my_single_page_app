@@ -7,25 +7,20 @@ const addTweetForm = document.querySelector('.creatTweet');
 const btnSubmit = document.querySelector('#submit-main-tweet');
 const textEreaInput = document.querySelector('#text-area-input');
 const tweetText = document.querySelectorAll('.tweetText');
-
-
-//test
 const editSubmitButton = document.querySelector('#update-submit-btn');
 
 
-
 function goToUserTweets(user_id) {
-  const url = window.location.pathname;
-  const user_param_id = url.substring(url.lastIndexOf('/') + 1);
-  console.log(user_param_id);
+    const url = window.location.pathname;
+    const user_param_id = url.substring(url.lastIndexOf('/') + 1);
+    console.log(user_param_id);
 
-  if(user_id === user_param_id) {
-    window.location.href = `/user-account/${user_param_id}`
-  } else {
-    window.location.href = `/user-profile/${user_id}`
-  }
+    if(user_id === user_param_id) {
+        window.location.href = `/user-account/${user_param_id}`
+    } else {
+        window.location.href = `/user-profile/${user_id}`
+    }
 }
-
 
 /////////////////////////////// TWEET OVERLAY //////////////////////////////////////
 function toggleCreateTweetModal(){
@@ -34,9 +29,17 @@ function toggleCreateTweetModal(){
 function toggleUpdateTweetModal(){
     document.querySelector("#updateTweetModal").classList.toggle("hidden")
 }
+function openEditForm(tweet_id) {
+    let tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
+    textEreaInput.value = tweetText.innerText
+    editSubmitButton.setAttribute('onclick', `edit('${tweet_id}')`)
+    
+    toggleUpdateTweetModal()
+}
 
 
-//-POST-//  -->  /////////// CREATE TWEET - FETCH //////////////
+
+/////////// CREATE TWEET - FETCH //////////////
 async function createTweet(){
     const form = event.target
     // Get the button, set the data-await, and disable it
@@ -62,7 +65,6 @@ async function createTweet(){
     const res = await connection.json();
     const tweet = res.tweet
     
-  
     let tweet_post = `
         <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
           <div class="flex">
@@ -82,7 +84,6 @@ async function createTweet(){
               <div id="tweet-text" class="pt-2">
                 ${tweet.tweet_text}
               </div>
-              
               <div id="tweet-image">
                 <img class="mt-2 w-full object-cover h-80 tweetImg" src="/static/images/user_content_images/${tweet.tweet_image}">
               </div>
@@ -99,50 +100,30 @@ async function createTweet(){
         </div>
       `
     document.querySelector(".tweet-post").insertAdjacentHTML("afterbegin", tweet_post)
-
     _one(".createTweet", form).value = ""
-    
     document.querySelector("#createTweetModal").classList.add("hidden")
     hideBrokenImage();
 }
 
-
-
-function openEditForm(tweet_id) {
-  console.log(tweet_id);
-  // console.log(textEreaInput);
-  let tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
-  textEreaInput.value = tweetText.innerText
-  editSubmitButton.setAttribute('onclick', `edit('${tweet_id}')`)
-  console.log(editSubmitButton);
-  
-  toggleUpdateTweetModal()
-}
-
-
-//-UPDATE-//  -->  /////////// UPDATE TWEET //////////////
+/////////// UPDATE TWEET //////////////
 async function edit(tweet_id) {
-  let tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
-  console.log(tweet_id);
-  const form = event.target.form
-  toggleUpdateTweetModal()
-  const connection = await fetch(`/api-tweets/${tweet_id}`, {
-    method: "PUT",
-    body: new FormData(form)
-  })
-  if (!connection.ok) {
-    alert("Could not connect")
-    return
-  }
-  let editedTweet = await connection.json()
-  console.log(editedTweet.tweet.tweet_image);
-  let tweet_text = editedTweet.tweet.tweet_text
-
-  tweetText.innerText = tweet_text
-  
+    let tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
+    const form = event.target.form
+    toggleUpdateTweetModal()
+    const connection = await fetch(`/api-tweets/${tweet_id}`, {
+        method: "PUT",
+        body: new FormData(form)
+    })
+    if (!connection.ok) {
+        alert("Could not connect")
+        return
+    }
+    let editedTweet = await connection.json()
+    let tweet_text = editedTweet.tweet.tweet_text
+    tweetText.innerText = tweet_text
 }
 
-//-DELETE-//  -->  /////////// DELETE TWEET //////////////
+/////////// DELETE TWEET //////////////
 async function deleteTweet(tweet_id) {
     const connection = await fetch(`/api-tweets/${tweet_id}`, {
         method : "DELETE"
@@ -151,7 +132,6 @@ async function deleteTweet(tweet_id) {
         alert("uppps... try again")
         return
     }
-
     document.querySelector(`[id='${tweet_id}']`).remove()
 }
 
@@ -163,7 +143,7 @@ async function deleteTweet(tweet_id) {
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////  JQuery  //////////////////////////////////////////////////////////////////////////////////////
 // JQuery - hide borken image //
 function hideBrokenImage() {
     $('.userProfile').on("error", function() {
