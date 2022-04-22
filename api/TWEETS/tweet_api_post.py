@@ -69,7 +69,7 @@ def _(user_id):
             image_name = f'{image_id}{file_extension}'
 
             # Save the image
-            image_path = f'static/images/user_content_images/{image_name}'
+            image_path = f'./static/images/user_content_images/{image_name}'
             image.save(image_path)
 
             # Converting the image to json object - str
