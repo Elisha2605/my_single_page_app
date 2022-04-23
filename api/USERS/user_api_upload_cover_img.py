@@ -1,4 +1,4 @@
-from bottle import post, response, request, put
+from bottle import post, response, request, put, redirect
 import data
 import os
 import uuid
@@ -8,7 +8,7 @@ import imghdr
 
 
 ##############  User upload cover image/ POST  ################
-@post('/api-user-upload-cover/<user_id>')
+@put('/api-user-upload-cover/<user_id>')
 def _(user_id):
 
     image = request.files.get('user_cover_image')
@@ -25,7 +25,7 @@ def _(user_id):
 
     image_name = f'{image_id}{file_extension}'
 
-    image_path = f'./static/images/user_profile_pictures/{image_name}'
+    image_path = f'./static/images/user_cover_image/{image_name}'
     image.save(image_path)
 
     json.dumps(str(image_name))
@@ -36,9 +36,9 @@ def _(user_id):
         os.remove(image_path)
         response.status = 400
         return {"info: Invalid image format"}
-    
-   
+
+
     data.USERS[user_id]['user_cover_image'] = image_name
 
     response.status = 200
-    return data.USERS[user_id]
+    return dict(image_cover_image=image_name)

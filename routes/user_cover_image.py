@@ -9,8 +9,6 @@ def _():
 
         is_fetch = True if request.headers.get('From-Fetch') else False
         page_title = "upload-cover"
-
-
         return dict(
             title=page_title,
             is_fetch=is_fetch,

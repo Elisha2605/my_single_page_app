@@ -1,7 +1,29 @@
 .image-upload>input {
     display: none;
 }
+
+/*  */
+.coustom-file-upload>input[type="file"] {
+    position: fixed;
+    right: 100%;
+    bottom: 100%;
+}
+.tests {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+/*  */
+
 #display-filename {
+    position: relative;
+    bottom: 8px;
+    left: 10px;
+    font-size: 14px;
+}
+#display-cover-img-name {
+    display: block;
     position: relative;
     bottom: 8px;
     left: 10px;
@@ -30,4 +52,17 @@
   top: 0;
   width: 100%;
   height: 100%;
+}
+
+.return-button {
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.return-button:hover {
+    background-color: rgba(181, 181, 181, 0.2);
 }

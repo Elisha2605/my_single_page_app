@@ -16,34 +16,59 @@
 
   <div class="w-2/4 min-h-screen border-x border-gray-300">
     
-    <div class="pl-7 pt-3">
-      <p class="font-bold text-2xl">{{user_first_name}}</p>
-      <p class="font-thin mb-2">{{tweet_count}} Tweets</p>
+    <div class="pl-7 pt-3 flex flex-row gap-8">
+
+      <a href="/{{user_id}}" onclick="spa(this); return false">
+        <div class="pt-2 return-button">
+          <svg class="" xmlns="http://www.w3.org/2000/svg" width="19.198" height="15.551" viewBox="0 0 19.198 15.551">
+            <g id="Group_3" data-name="Group 3" transform="translate(-30.302 -35.145)">
+              <g id="Group_2" data-name="Group 2" transform="translate(31 34.695)">
+                <g id="Group_1" data-name="Group 1">
+                  <path id="Path_1" data-name="Path 1" d="M10,0,0,7.157" transform="translate(0 1.148)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+                  <line id="Line_2" data-name="Line 2" x1="10" y1="7" transform="translate(0 8.305)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+                  <line id="Line_3" data-name="Line 3" x1="17" transform="translate(1 8.305)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="1"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </a>
+
+      <div class="">
+        <p class="font-bold text-2xl">{{user_first_name}}</p>
+        <p class="font-thin mb-2">{{tweet_count}} Tweets</p>
+      </div>
+
     </div>
-    <div class="flex h-56 bg-slate-400">
-         <!-- test-start -->
-         <span class=" top-80 left-2/4 ml-40">
-          <div class="image-upload">
-            <label for="formFile">
-              <!-- <i class="fas fa-image fa-2x image-icon"></i> -->
-              <a class="border-blue1 border hover:bg-blue1 text-black hover:text-white font-light py-2 px-4 rounded-full cursor-pointer" href="/user_cover_image_upload" onclick="spa(this); return false">
+
+
+    <div class="flex h-56 bg-slate-400 banner">
+        <img class="cover object-cover w-full cover-to-remove" src="/static/images/user_cover_image/{{user_cover_image}}" onError="this.onerror=null;this.src='/static/images/user_cover_image/default_cover_image2.png';" alt="">
+      <div class="absolute my-36 mx-4">
+        <img class="flex-none w-40 h-40 object-cover rounded-full border-4 border-white" src="/static/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
+      </div> 
+      <!-- test-start -->
+      <span class="absolute ml-64 mt-60">
+        <div class="image-upload">
+          <label for="formFile">
+            <!-- <i class="fas fa-image fa-2x image-icon"></i> -->
+            <span class="ml-48">
+              <a class=" border-blue1 border hover:bg-blue1 text-black hover:text-white font-light py-2 px-4 rounded-full cursor-pointer" href="/user_cover_image_upload" onclick="spa(this); return false">
                 Set cover 
               </a>
-            </label>
-            <span id="user-filename"></span>
-            <input onchange="getFileName()" onclick="userUploadCoverImage()" class="editTweet" name="user_cover_image" type="file" id="formFile">
-          </div>
-        </span>
-         <!-- test-start -->
-      <div class="my-36 mx-4">
-        <img class="flex-none w-40 h-40 object-cover rounded-full border-4 border-white" src="/static/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
-      </div>  
+            </span>
+          </label>
+          <span id="user-filename"></span>
+          <input onchange="getFileName()" onclick="userUploadCoverImage()" class="editTweet" name="user_cover_image" type="file" id="formFile">
+        </div>
+      </span>
+       <!-- test-start --> 
     </div>
     <div class="h-56"> 
         <div class="absolute mt-24 mx-4">
           <h1 class="font-bold text-2xl">{{user_first_name}}</h1>
           <h1 class="font-thin">@{{user_name}}</h1>
-          <div><i class="fas fa-calendar"></i><span class="font-thin mx-1">Joined {{user_singup_date}}</span></div>
+          <div><i class="fas fa-calendar" style="filter: invert(0.20);"></i><span class="font-thin mx-1">Joined {{user_singup_date}}</span></div>
           <span class="pr-4  font-thin">0 Following</span><span class="font-thin">0 Followers</span>
         </div>
     </div>

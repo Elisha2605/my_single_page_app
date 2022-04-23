@@ -19,8 +19,9 @@ USERS = {
         "user_name": "AichaHaidara",
         "user_email": "a@a.com", 
         "user_password": "123",
-        "user_profile_picture": "dalmatian.jpeg",
-        "user_signup_date": "January 2014"
+        "user_profile_picture": "aicha.jpeg",
+        "user_signup_date": "January 2014",
+        "user_cover_image": "landscape2.jpg"
     },
     "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6": {
         "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6",
@@ -30,7 +31,8 @@ USERS = {
         "user_email": "elisha_ngoma@yahoo.fr", 
         "user_password": "123",
         "user_profile_picture": "elisha.jpg",
-        "user_signup_date": "October 2016"
+        "user_signup_date": "October 2016",
+        "user_cover_image": "landscape1.jpg"
     },
 }
 
@@ -54,7 +56,7 @@ TWEETS= {
         "user_first_name": "Aicha",
         "user_last_name": "Haidara",
         "user_name": "AichaHaidara",
-        "user_profile_picture": "dalmatian.jpeg", 
+        "user_profile_picture": "aicha.jpeg", 
         "tweet_text": "The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work",
         "tweet_image": "cocker.jpeg",
         "tweet_time": "Jan 04. 17.15",
