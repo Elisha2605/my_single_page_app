@@ -1,8 +1,7 @@
-import json
 from bottle import post, response, request
+import json
 import data
 import uuid
-import time
 from datetime import datetime
 import os
 import imghdr

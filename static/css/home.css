@@ -1,0 +1,33 @@
+.image-upload>input {
+    display: none;
+}
+#display-filename {
+    position: relative;
+    bottom: 8px;
+    left: 10px;
+    font-size: 14px;
+}
+.image-icon {
+    color: rgb(39, 149, 216) !important;
+}
+
+
+/* spa */
+.spa-modal-overlay {
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+.spa-modal-close-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

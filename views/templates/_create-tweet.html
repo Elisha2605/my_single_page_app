@@ -11,14 +11,13 @@
         </div>
         <hr>
         <div class="ml-28 mt-4 border-none">
-          <input class=" 
-          editTweet
-          font-normal
-          text-gray-700
-          rounded
-          transition
-          ease-in-out
-          focus:text-gray-700 focus:outline-none" name="tweet_image" type="file" id="formFile">
+            <div class="image-upload">
+                  <label for="formFile">
+                    <i class="fas fa-image fa-2x image-icon cursor-pointer"></i>
+                  </label>
+                  <span id="display-filename"></span>
+                  <input onchange="getFileName()" class="editTweet" name="tweet_image" type="file" id="formFile">
+            </div>
         </div>
         <button type="submit" class="absolute bottom-2 right-2 px-8 py-2 bg-blue2 text-white font-semibold rounded-full"
                 data-default="Tweet"

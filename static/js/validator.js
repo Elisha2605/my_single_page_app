@@ -2,7 +2,8 @@
 function validate(callback){
   const form = event.target
   // console.log(form)
-  const validate_error = "red"
+  const validate_error = "rgba(255, 0, 0, 0.1)"
+  // const _quick_tweet_box = _one("#_quick-tweet")
   
   _all("[data-validate]",form).forEach(function(element){ 
     element.classList.remove("validate_error")
@@ -15,7 +16,8 @@ function validate(callback){
             element.value.length > parseInt(element.getAttribute("data-max")) 
         ){
           element.classList.add("validate_error")
-          _one("#_quick-tweet").style.borderColor = validate_error
+          element.style.backgroundColor = validate_error
+          // _quick_tweet_box.style.borderColor = validate_error
         }
       break;
       case "int":

@@ -19,7 +19,8 @@ from routes import (
     tweets_get,
     user_account,
     user_profile,
-    admin
+    admin,
+    user_cover_image
 )
 ########  APIs  #######
 from api.TWEETS import (
@@ -29,7 +30,8 @@ from api.TWEETS import (
     tweet_api_update,
 )
 from api.USERS import (
-    user_api_get   
+    user_api_get,
+    user_api_upload_cover_img
 )
 
 

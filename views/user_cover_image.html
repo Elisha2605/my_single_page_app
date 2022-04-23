@@ -1,0 +1,48 @@
+% if not is_fetch:
+  % include("templates/_header")
+% end
+
+<div class="spa-modal-overlay">
+    <a href="/user-profile/b6d1f3b1-c6e8-46f0-892f-19fd065cbfa6" class="spa-modal-close-layer" onclick="spa(this); return false"></a>
+    <main 
+        class="modal"
+        data-spa_modal
+        data-spa_url="/user_cover_image_upload"
+        data-spa_title={{title}}
+    >
+
+    
+    <form onsubmit="validate(edit); return false">
+        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
+            <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">  
+                <!-- <a href="/" onclick="spa(this); return false" class=" absolute text-inherit text-2xl ml-72 text-black">✖</a> -->
+                <div class="mx-auto max-w-md">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/800px-Twitter-logo.svg.png" class="h-8 mx-auto" alt="" />
+                
+                    <h2 class="p-4 text-4xl m-auto font-bold w-full">Upload cover image</h2>
+                    <section id="login-error-msg" class="text-red-500">
+                    </section>
+
+                        <div class="image-upload w-full pt-10 pb-10">
+                            <label for="formFile" class="flex justify-center">
+                              <i class="fas fa-image fa-2x image-icon cursor-pointer"></i>
+                            </label>
+                            <div id="display-filename" class="flex justify-center mt-7 mr-5"></div>
+                            <input onchange="getFileName()" class="editTweet" name="tweet_image" type="file" id="formFile">
+                        </div>
+
+                    <div class="pb-4 flex justify-center">
+                    <button type="submit" class="h-12 w-56 mt-6 bg-blue1 rounded-3xl px-4 py-2 text-log text-white tracking-wide font-light font-sans">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    </main>
+</div>
+
+% if not is_fetch:
+  % include("templates/_footer")
+% end

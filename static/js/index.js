@@ -155,3 +155,9 @@ function hideBrokenImage() {
         $(this).hide();
     });
 }
+
+// Get image file_name
+const file = document.querySelector(".editTweet");
+function getFileName(){ 
+    document.querySelector("#display-filename").innerText = file.value.split('\\').pop().split('/').pop();
+};

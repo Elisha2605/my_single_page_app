@@ -21,6 +21,20 @@
       <p class="font-thin mb-2">{{tweet_count}} Tweets</p>
     </div>
     <div class="flex h-56 bg-slate-400">
+         <!-- test-start -->
+         <span class=" top-80 left-2/4 ml-40">
+          <div class="image-upload">
+            <label for="formFile">
+              <!-- <i class="fas fa-image fa-2x image-icon"></i> -->
+              <a class="border-blue1 border hover:bg-blue1 text-black hover:text-white font-light py-2 px-4 rounded-full cursor-pointer" href="/user_cover_image_upload" onclick="spa(this); return false">
+                Set cover 
+              </a>
+            </label>
+            <span id="user-filename"></span>
+            <input onchange="getFileName()" onclick="userUploadCoverImage()" class="editTweet" name="user_cover_image" type="file" id="formFile">
+          </div>
+        </span>
+         <!-- test-start -->
       <div class="my-36 mx-4">
         <img class="flex-none w-40 h-40 object-cover rounded-full border-4 border-white" src="/static/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
       </div>  
