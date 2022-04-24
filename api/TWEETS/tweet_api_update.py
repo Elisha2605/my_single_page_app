@@ -1,4 +1,4 @@
-from bottle import put, response, request
+from bottle import put, response, request, view
 import json
 import data
 import uuid

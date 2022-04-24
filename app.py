@@ -4,7 +4,8 @@ from bottle import error, default_app, get, run, static_file, view
 ########  AUTH  #######
 from Auth.GET import (
     signup_get,
-    login_get
+    login_get,
+    logout_get
 )
 
 from Auth.POST import (

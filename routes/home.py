@@ -1,7 +1,7 @@
-from bottle import get, view, request, response
+from bottle import get, view, request, response, redirect
 import data
 import random
-
+import jwt
 
 ##############  Home  ################
 @get('/<user_id>')
@@ -9,6 +9,15 @@ import random
 def _(user_id):
 
     try:
+        # SESSSION
+        user_session_jwt = request.get_cookie("jwt_user")
+        if user_session_jwt not in data.SESSION:
+            return redirect("/login") 
+        
+        for session in data.SESSION:
+            if session == user_session_jwt:
+                jwt_user = jwt.decode(session, data.JWT_USER_SECRET, algorithms=["HS256"])
+        
 
         ## info for the home (index)
         user_first_name=data.USERS[user_id]['user_first_name']
@@ -48,7 +57,8 @@ def _(user_id):
             trends=data.trends,
             items=data.items, 
 
-            random_users=random_users
+            random_users=random_users,
+            jwt_user=jwt_user
         )
     except Exception as ex:
         print(ex)

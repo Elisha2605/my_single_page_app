@@ -199,3 +199,5 @@ function getFileName(){
 document.querySelector(".display-filename").innerText = file.value.split('\\').pop().split('/').pop();
 };
 
+
+

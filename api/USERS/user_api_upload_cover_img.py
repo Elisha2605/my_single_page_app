@@ -4,12 +4,19 @@ import os
 import uuid
 import json
 import imghdr
-
-
+import jwt
 
 ##############  User upload cover image/ POST  ################
 @put('/api-user-upload-cover/<user_id>')
 def _(user_id):
+
+    user_session_jwt = request.get_cookie("jwt_user")
+    if user_session_jwt not in data.SESSION:
+        return redirect("/login") 
+        
+    for session in data.SESSION:
+        if session == user_session_jwt:
+            jwt_user = jwt.decode(session, data.JWT_USER_SECRET, algorithms=["HS256"])
 
     image = request.files.get('user_cover_image')
     file_name, file_extension = os.path.splitext(image.filename)
@@ -40,6 +47,11 @@ def _(user_id):
 
     data.USERS[user_id]['user_cover_image'] = image_name
 
+    user_id = jwt_user['jwt_user_id']
 
     response.status = 200
-    return dict(image_cover_image=image_name)
+    return dict(
+        image_cover_image=image_name,
+        user_id=user_id,
+        jwt_user=jwt_user
+        )

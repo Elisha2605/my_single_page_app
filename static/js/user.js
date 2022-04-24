@@ -7,7 +7,7 @@ async function userUploadCoverImage(user_id) {
         body: new FormData(form)
     })
     if (!connection.ok) {
-        alert('Uuup... connection failed')
+        alert('Uuup... connection failed') 
         return
     }
     try {
