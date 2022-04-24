@@ -70,20 +70,9 @@ def _(tweet_id):
                 os.remove(image_path)
                 response.status = 400
                 return {"info: Invalid image format"}
-
-
-
-        
+     
             data.TWEETS[tweet_id]['tweet_text'] =  tweet_text
             data.TWEETS[tweet_id]['tweet_image'] = image_name
-        
-        # if request.forms.get('tweet_image'):
-        #     data.TWEETS[tweet_id]['tweet_text'] = tweet_text
-        #     data.TWEETS[tweet_id]['tweet_image'] = tweet_image
-        # else:
-        #     data.TWEETS[tweet_id]['tweet_text'] = tweet_text
-           
-
 
     except Exception as ex:
         print(ex)

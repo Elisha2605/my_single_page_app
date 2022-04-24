@@ -3,7 +3,7 @@ from bottle import get, view, request, response
 
 
 @get('/user_cover_image_upload')
-@view('user_cover_image')
+@view('user-cover-image')
 def _():
     try:
 

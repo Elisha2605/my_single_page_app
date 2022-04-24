@@ -40,5 +40,6 @@ def _(user_id):
 
     data.USERS[user_id]['user_cover_image'] = image_name
 
+
     response.status = 200
     return dict(image_cover_image=image_name)

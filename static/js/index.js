@@ -64,25 +64,28 @@ async function createTweet(){
     let tweet_post = `
       <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
         <div class="flex">
+
           <img class="flex-none w-12 h-12 object-cover rounded-full userProfile" src="/static/images/user_profile_pictures/${tweet.user_profile_picture}">
+          
           <div class="w-full pl-4">
             <!-- first name - username/ text -->
-            <div id="user-info" class="flex">
-                <p class="font-bold pr-2">
-                  <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
+            <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
+              <div id="user-info" class="flex">
+                  <p class="font-bold pr-2">
                     ${tweet.user_first_name} ${tweet.user_last_name}
-                  </span>
-                </p>
-                <p class="font-thin">
-                  @${tweet.user_name} - <span class="ml-1 text-xs font-light">${tweet['tweet_time']}</span>
-                </p>                        
-            </div>
-            <div>
-              <div id="tweet-text" class="pt-2 test07">
-              ${tweet.tweet_text}
+                  </p>
+                  <p class="font-thin">
+                    @${tweet.user_name} - <span class="ml-1 text-xs font-light">${tweet['tweet_time']}</span>
+                  </p>                        
               </div>
+            </span>
+
+
+            <div id="tweet-text" class="pt-2 test07">
+              ${tweet.tweet_text}
             </div>
-           
+
+
             <div id="tweet-image">
               <img class="mt-2 w-full object-cover h-80 tweetImg" src="/static/images/user_content_images/${tweet.tweet_image}">
             </div>
@@ -98,7 +101,6 @@ async function createTweet(){
         </div>
       </div>
       `
-
     incrementedValueMainElement.innerText = 0
     incrementedValueQuickElement.innerText = 0
     document.querySelector(".tweet-post").insertAdjacentHTML("afterbegin", tweet_post)
@@ -111,6 +113,10 @@ async function createTweet(){
 /////////// UPDATE TWEET //////////////
 async function edit(tweet_id) {
     let tweetText = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].childNodes[5]
+    document.querySelector(`[id='${tweet_id}']`).children[0].children[1].children[2].childNodes[0]
+    let image = document.querySelector(`[id='${tweet_id}']`).children[0].children[1].children[2]
+    console.log(image);
+  
     const form = event.target.form
     toggleUpdateTweetModal()
     const connection = await fetch(`/api-tweets/${tweet_id}`, {
@@ -125,8 +131,13 @@ async function edit(tweet_id) {
     let tweet_text = editedTweet.tweet.tweet_text
     let tweet_image = editedTweet.tweet.tweet_image
     tweetText.innerText = tweet_text
+    
+    img = `<img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80 rounded-2xl tweet-image" src="/static/images/user_content_images/${tweet_image}">`
 
-    document.querySelector(".tweet-image").src = `/static/images/user_content_images/${tweet_image}`
+    image.innerHTML = img
+    
+    document.querySelector(".editTweet-image-update").value = ""
+    // document.querySelector(`[id='${tweet_id}']`).children[0].children[1].children[2].childNodes[0].src = `/static/images/user_content_images/${tweet_image}`
 }
 
 /////////// DELETE TWEET //////////////
