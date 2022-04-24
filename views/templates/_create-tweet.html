@@ -7,7 +7,7 @@
       <form name="myForm" class="creatTweet updateTweet" onsubmit="validate(createTweet); return false" autocomplete="off" enctype="multipart/form-data">
         <div>
           <img class="absolute ml-12 mt-12 flex-none w-14 h-14 object-cover rounded-full userProfile" src="/static/images/user_profile_pictures/{{user_profile_picture}}" onError="this.onerror=null;this.src='/images/user_profile_pictures/default_profile_picture.png';">
-          <textarea oninput="updateCharactersMain()" name="tweet_text" class="createTweet create-tweet-input ml-28 mt-12 text-2xl placeholder:text-gray-700 pl-4 pt-3 outline-none border-none " cols="48" rows="5" placeholder="What's happening?" maxlength="100"></textarea>
+          <textarea oninput="updateCharactersMain()" name="tweet_text" class="createTweet create-tweet-input ml-28 mt-12 text-2xl placeholder:text-gray-700 pl-4 pt-3 outline-none border-none " cols="48" rows="5" placeholder="What's happening?" data-validate="str" data-min="1" data-max="100" maxlength="100"></textarea>
         </div>
         <span class="ml-28">
           <label for="txt-tweet" class="font-thin text-sm text-gray-400  pl-4"><span class="remaining-chars-main">0</span> / 100 characters</label>

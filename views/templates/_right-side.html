@@ -21,7 +21,7 @@
           % for user in random_users:
           <div class="flex items-center gap-2 px-2 py-3 hover:bg-gray-200 cursor-pointer">
             % if "user_profile_picture" in user:
-            <img class="w-12 h-12 rounded-full flex-none object-cover" src="/static/images/user_profile_pictures/{{user['user_profile_picture']}}">
+            <img class="w-12 h-12 rounded-full flex-none object-cover" src="/static/images/user_profile_pictures/{{user['user_profile_picture']}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';" />
             % end
             <div class="flex-1 overflow-ellipsis">
               <p>{{user["user_first_name"]}}</p>
