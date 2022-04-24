@@ -38,6 +38,7 @@ def _():
                     'jwt_user_first_name': data.USERS[key]['user_first_name'], 
                     'jwt_user_last_name': data.USERS[key]['user_last_name'], 
                     'jwt_user_name': data.USERS[key]['user_name'], 
+                    'jwt_user_profile_picture': data.USERS[key]['user_profile_picture'],
                     'session_id': str(uuid.uuid4())
                 },
                     data.JWT_USER_SECRET, algorithm="HS256"

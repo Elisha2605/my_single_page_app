@@ -9,16 +9,19 @@ const tweetText = document.querySelectorAll('.tweetText');
 const editSubmitButton = document.querySelector('#update-submit-btn');
 
 function goToUserTweets(user_id) {
-    const url = window.location.pathname;
-    const user_param_id = url.substring(url.lastIndexOf('/') + 1);
-    console.log(user_param_id);
-
-    if(user_id === user_param_id) {
-        window.location.href = `/user-account/${user_param_id}`
-    } else {
-        window.location.href = `/user-profile/${user_id}`
-    }
+    
+    fetch('/api-jwt-user')
+    .then(res => res.json())
+    .then(jwt_user => {
+        if(user_id === jwt_user['jwt_user_id']) {
+            window.location.href = `/user-account/${jwt_user['jwt_user_id']}`
+        } else {
+            window.location.href = `/user-profile/${user_id}`
+        }
+    })
+    
 }
+
 
 /////////////////////////////// TWEET OVERLAY //////////////////////////////////////
 function toggleCreateTweetModal(){

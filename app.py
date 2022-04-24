@@ -32,7 +32,8 @@ from api.TWEETS import (
 )
 from api.USERS import (
     user_api_get,
-    user_api_upload_cover_img
+    user_api_upload_cover_img,
+    jwt_user_api_get
 )
 
 
