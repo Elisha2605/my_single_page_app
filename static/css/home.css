@@ -2,19 +2,6 @@
     display: none;
 }
 
-/*  */
-.coustom-file-upload>input[type="file"] {
-    position: fixed;
-    right: 100%;
-    bottom: 100%;
-}
-.tests {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-}
-/*  */
 
 #display-filename {
     position: relative;
@@ -66,3 +53,10 @@
 .return-button:hover {
     background-color: rgba(181, 181, 181, 0.2);
 }
+
+
+/* test-start */
+.test07 {
+
+}
+/* test-end */

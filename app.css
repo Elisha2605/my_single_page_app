@@ -779,6 +779,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: -1.5rem;
 }
 
+.mb-64 {
+  margin-bottom: 16rem;
+}
+
+.mb-40 {
+  margin-bottom: 10rem;
+}
+
+.-mb-40 {
+  margin-bottom: -10rem;
+}
+
 .block {
   display: block;
 }
@@ -853,6 +865,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-5 {
   height: 1.25rem;
+}
+
+.h-96 {
+  height: 24rem;
 }
 
 .min-h-screen {
@@ -1167,6 +1183,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.5rem;
 }
 
+.p-64 {
+  padding: 16rem;
+}
+
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -1294,6 +1314,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-9 {
   padding-top: 2.25rem;
+}
+
+.pb-40 {
+  padding-bottom: 10rem;
+}
+
+.pb-64 {
+  padding-bottom: 16rem;
 }
 
 .font-sans {

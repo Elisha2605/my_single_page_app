@@ -1,5 +1,5 @@
-import time
 from datetime import datetime
+import random
 
 ######################## REGEX ###############################
 REGEX_EMAIL = '^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
@@ -34,7 +34,43 @@ USERS = {
         "user_signup_date": "October 2016",
         "user_cover_image": "landscape1.jpg"
     },
+
+
+     "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa2": {
+        "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa2",
+        "user_first_name": "a", 
+        "user_last_name": "aa",
+        "user_name": "ElishaNgoma",
+        "user_email": "elisha_ngoma@yahoo.fr", 
+        "user_password": "123",
+        "user_profile_picture": "elisha.jpg",
+        "user_signup_date": "October 2016",
+        "user_cover_image": "landscape1.jpg"
+    },
+     "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa8": {
+        "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfa8",
+        "user_first_name": "b", 
+        "user_last_name": "bb",
+        "user_name": "ElishaNgoma",
+        "user_email": "elisha_ngoma@yahoo.fr", 
+        "user_password": "123",
+        "user_profile_picture": "elisha.jpg",
+        "user_signup_date": "October 2016",
+        "user_cover_image": "landscape1.jpg"
+    },
+     "b6d1f3b1-c6e8-46f0-892f-19fd065cbfal": {
+        "user_id": "b6d1f3b1-c6e8-46f0-892f-19fd065cbfal",
+        "user_first_name": "c", 
+        "user_last_name": "cc",
+        "user_name": "ElishaNgoma",
+        "user_email": "elisha_ngoma@yahoo.fr", 
+        "user_password": "123",
+        "user_profile_picture": "elisha.jpg",
+        "user_signup_date": "October 2016",
+        "user_cover_image": "landscape1.jpg"
+    },
 }
+
 
 ADMIN = {
     "admin_email": "admin@admin.com",

@@ -1,6 +1,6 @@
 from bottle import get, view, request, response
 import data
-
+import random
 
 
 ##############  Home  ################
@@ -22,6 +22,12 @@ def _(user_id):
             tweet_id=data.TWEETS[key]
         # profile_picture_login
 
+        # random users
+        users = []
+        for key in data.USERS:
+            users_dict = data.USERS
+            users.append(users_dict[key])
+            random_users = [random.choice(list(users)) for i in range(4)]
             
         is_fetch = True if request.headers.get('From-Fetch') else False
         return dict(
@@ -41,6 +47,8 @@ def _(user_id):
             tabs=data.tabs, 
             trends=data.trends,
             items=data.items, 
+
+            random_users=random_users
         )
     except Exception as ex:
         print(ex)

@@ -18,14 +18,14 @@
           <div class="px-2 pt-4 font-bold text-xl">
             You might like
           </div>
-          % for item in items:
+          % for user in random_users:
           <div class="flex items-center gap-2 px-2 py-3 hover:bg-gray-200 cursor-pointer">
-            % if "img" in item:
-            <img class="w-12 h-12 rounded-full flex-none object-cover" src="/static/images/user_profile_pictures/{{item['img']}}">
+            % if "user_profile_picture" in user:
+            <img class="w-12 h-12 rounded-full flex-none object-cover" src="/static/images/user_profile_pictures/{{user['user_profile_picture']}}">
             % end
             <div class="flex-1 overflow-ellipsis">
-              <p>{{item["title"]}}</p>
-              <p class="font-thin">@{{item["user_name"]}}</p>
+              <p>{{user["user_first_name"]}}</p>
+              <p class="font-thin">@{{user["user_name"]}}</p>
             </div>
             <button class="py-2 px-4 bg-white rounded-full">
               Follow

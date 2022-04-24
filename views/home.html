@@ -22,7 +22,6 @@
               <img class="flex-none w-12 h-12 object-cover rounded-full" src="/static/images/user_profile_pictures/{{tweet['user_profile_picture']}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
               % end
               <div class="w-full pl-4">
-                
                 <!-- first name - username/ text -->
                 <a href="/user-profile/{{tweet['user_id']}}" onclick="spa(this); return false">
                   <div id="user-info" class="flex">
@@ -41,7 +40,7 @@
                 
                 % if 'tweet_image' in tweet:
                   <div id="tweet-image">
-                    <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80 rounded-2xl" src="/static/images/user_content_images/{{tweet["tweet_image"]}}">
+                    <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80 rounded-2xl tweet-image" src="/static/images/user_content_images/{{tweet["tweet_image"]}}">
                   </div> 
                 % end
                

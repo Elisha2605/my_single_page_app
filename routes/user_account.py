@@ -1,6 +1,6 @@
 from bottle import get, response, view, request
 import data
-
+import random
 
 
 ############## User tweets / GET - ID ##############
@@ -26,6 +26,12 @@ def _(user_id):
                 user_tweets.append(data.TWEETS[key])
         
         
+        # random users
+        users = []
+        for key in data.USERS:
+            users_dict = data.USERS
+            users.append(users_dict[key])
+            random_users = [random.choice(list(users)) for i in range(4)]
        
         #response.content_type = 'application/json; charset=UTF-8'
         is_fetch = True if request.headers.get('From-Fetch') else False
@@ -45,6 +51,8 @@ def _(user_id):
                     tabs=data.tabs, 
                     trends=data.trends, 
                     items=data.items,
+
+                    random_users=random_users
                     ) 
                 
 
