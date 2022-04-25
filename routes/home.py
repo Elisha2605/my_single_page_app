@@ -1,7 +1,7 @@
-from bottle import get, view, request, response
+from bottle import get, view, request, response, redirect
 import data
-
-
+import random
+import jwt
 
 ##############  Home  ################
 @get('/<user_id>')
@@ -9,6 +9,15 @@ import data
 def _(user_id):
 
     try:
+        # SESSSION
+        user_session_jwt = request.get_cookie("jwt_user")
+        if user_session_jwt not in data.SESSION:
+            return redirect("/login") 
+        
+        for session in data.SESSION:
+            if session == user_session_jwt:
+                jwt_user = jwt.decode(session, data.JWT_USER_SECRET, algorithms=["HS256"])
+        
 
         ## info for the home (index)
         user_first_name=data.USERS[user_id]['user_first_name']
@@ -22,10 +31,16 @@ def _(user_id):
             tweet_id=data.TWEETS[key]
         # profile_picture_login
 
+        # random users
+        users = []
+        for key in data.USERS:
+            users_dict = data.USERS
+            users.append(users_dict[key])
+            random_users = [random.choice(list(users)) for i in range(4)]
             
         is_fetch = True if request.headers.get('From-Fetch') else False
         return dict(
-            title="Twitter",
+            title="Explore",
             is_fetch=is_fetch,
             tweet_id=tweet_id,
 
@@ -41,6 +56,9 @@ def _(user_id):
             tabs=data.tabs, 
             trends=data.trends,
             items=data.items, 
+
+            random_users=random_users,
+            jwt_user=jwt_user
         )
     except Exception as ex:
         print(ex)

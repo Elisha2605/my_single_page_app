@@ -2,7 +2,9 @@
 function validate(callback){
   const form = event.target
   // console.log(form)
-  const validate_error = "rgba(240, 130, 240, 0.2)"
+  const validate_error = "rgba(255, 0, 0, 0.1)"
+  // const _quick_tweet_box = _one("#_quick-tweet")
+  
   _all("[data-validate]",form).forEach(function(element){ 
     element.classList.remove("validate_error")
     element.style.backgroundColor = "white"
@@ -15,6 +17,7 @@ function validate(callback){
         ){
           element.classList.add("validate_error")
           element.style.backgroundColor = validate_error
+          // _quick_tweet_box.style.borderColor = validate_error
         }
       break;
       case "int":
@@ -58,3 +61,4 @@ function clear_validate_error(){
   // event.target.classList.remove("validate_error")
   // event.target.value = ""
 }
+

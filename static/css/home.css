@@ -1,0 +1,62 @@
+.image-upload>input {
+    display: none;
+}
+
+
+#display-filename {
+    position: relative;
+    bottom: 8px;
+    left: 10px;
+    font-size: 14px;
+}
+#display-cover-img-name {
+    display: block;
+    position: relative;
+    bottom: 8px;
+    left: 10px;
+    font-size: 14px;
+}
+.image-icon {
+    color: rgb(39, 149, 216) !important;
+}
+
+
+/* spa */
+.spa-modal-overlay {
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+.spa-modal-close-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.return-button {
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.return-button:hover {
+    background-color: rgba(181, 181, 181, 0.2);
+}
+
+
+/* test-start */
+.test07 {
+
+}
+/* test-end */

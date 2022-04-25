@@ -1,4 +1,4 @@
-    % if not is_fetch:
+% if not is_fetch:
   % include("templates/_header")
 % end
 
@@ -15,44 +15,47 @@
           % include("templates/_quick-tweet")
             <!-- TWEETS -->
             <div id="tweet-post" class="voices mt-4 tweet-post">
+              
               % for tweet in tweets:
-        <div id="{{tweet['tweet_id']}}" class="p-4 border-t border-slate-200">
-            <div class="flex">
-              % if "user_profile_picture" in tweet:
-              <img class="flex-none w-12 h-12 object-cover rounded-full" src="/static/images/user_profile_pictures/{{tweet['user_profile_picture']}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
-              % end
-              <div class="w-full pl-4">
-                
-                <!-- first name - username/ text -->
-                <a href="/user-profile/{{tweet['user_id']}}" onclick="spa(this); return false">
-                  <div id="user-info" class="flex">
-                    <p class="font-bold pr-2">
-                    {{tweet['user_first_name']}} {{tweet['user_last_name']}}
-                    </p>
-                    <p class="font-thin">
-                      @{{tweet['user_name']}} - <span class="ml-1 text-xs font-light">{{tweet['tweet_time']}}</span>
-                    </p>                        
-                  </div>
-                </a>
-                
-                <div id="tweet-text" class="pt-2">
-                  {{tweet['tweet_text']}}
-                </div>
-                
-                % if 'tweet_image' in tweet:
-                  <div id="tweet-image">
-                    <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80 rounded-2xl" src="/static/images/user_content_images/{{tweet["tweet_image"]}}">
-                  </div> 
+            <div id="{{tweet['tweet_id']}}" class="p-4 border-t border-slate-200">
+              <div class="flex">
+
+                % if "user_profile_picture" in tweet:
+                <img class="flex-none w-12 h-12 object-cover rounded-full" src="/static/images/user_profile_pictures/{{tweet['user_profile_picture']}}" onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';">
                 % end
-               
-                <div class="flex gap-12 w-10 mt-4 text-lg">
-                    <i onclick="openEditForm(`{{tweet['tweet_id']}}`)" id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer"></i>
-                    <i onclick="deleteTweet(`{{tweet['tweet_id']}}`)" class="fas fa-trash ml-auto cursor-pointer"></i>
-                    <i class="fa-regular fa-comment ml-auto"></i>
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-retweet"></i>
-                    <i class="fa-solid fa-share-nodes"></i>
-                </div>
+
+                <div class="w-full pl-4">
+                  <!-- first name - username/ text -->
+                  <a href="/user-profile/{{tweet['user_id']}}" onclick="spa(this); return false">
+                    <div id="user-info" class="flex">
+                      <p class="font-bold pr-2">
+                      {{tweet['user_first_name']}} {{tweet['user_last_name']}}
+                      </p>
+                      <p class="font-thin">
+                        @{{tweet['user_name']}} - <span class="ml-1 text-xs font-light">{{tweet['tweet_time']}}</span>
+                      </p>                        
+                    </div>
+                  </a>
+                  
+                  
+                  <div id="tweet-text" class="pt-2">
+                    {{tweet['tweet_text']}}
+                  </div>
+                  
+                  % if 'tweet_image' in tweet:
+                    <div id="tweet-image">
+                      <img onerror="this.style.display='none'" class="mt-2 w-full object-cover h-80 rounded-2xl tweet-image" src="/static/images/user_content_images/{{tweet["tweet_image"]}}">
+                    </div> 
+                  % end
+                
+                  <div class="flex gap-12 w-10 mt-4 text-lg">
+                      <i onclick="openEditForm(`{{tweet['tweet_id']}}`)" id="edit-tweet" class="editBtn fa-solid fa-pen cursor-pointer"></i>
+                      <i onclick="deleteTweet(`{{tweet['tweet_id']}}`)" class="fas fa-trash ml-auto cursor-pointer"></i>
+                      <i class="fa-regular fa-comment ml-auto"></i>
+                      <i class="fa-regular fa-heart"></i>
+                      <i class="fa-solid fa-retweet"></i>
+                      <i class="fa-solid fa-share-nodes"></i>
+                  </div>
                 
               </div>
             </div>

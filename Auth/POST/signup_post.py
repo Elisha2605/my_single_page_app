@@ -51,7 +51,8 @@ def _():
             "user_email": user_email, 
             "user_password":user_password,
             "user_profile_picture": "",
-            "user_signup_date": data.SIGNUP_DATE
+            "user_signup_date": data.SIGNUP_DATE,
+            "user_cover_image": ""
         }
     else:
         file_name, file_extension = os.path.splitext(image.filename)  # .pn .jpeg .zip .mp4
@@ -97,7 +98,8 @@ def _():
             "user_email": user_email, 
             "user_password":user_password,
             "user_profile_picture": image_name,
-            "user_signup_date": data.SIGNUP_DATE
+            "user_signup_date": data.SIGNUP_DATE,
+            "user_cover_image": ""
         }
 
     response.status = 200
