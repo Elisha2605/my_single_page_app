@@ -29,8 +29,8 @@ def _():
     # Login User
     for key in data.USERS:
         user_id = key
-        if request.forms.get("user_email") in data.USERS[key]['user_email']:
-            if request.forms.get("user_password") in data.USERS[key]['user_password']:
+        if request.forms.get("user_email") == data.USERS[key]['user_email']:
+            if request.forms.get("user_password") == data.USERS[key]['user_password']:
                 
                 # COOKIES 
                 encode_user_jwt = jwt.encode({
@@ -48,7 +48,7 @@ def _():
 
                 # SET COOKIE
                 response.set_cookie('jwt_user', encode_user_jwt)
-
+            
 
                 response.statis = 200
                 return redirect(f'/user-account/{user_id}')

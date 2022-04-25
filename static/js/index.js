@@ -33,8 +33,7 @@ async function createTweet(){
     // button.innerText = button.getAttribute("data-await")
     button.disabled = true
   
-    const url = window.location.pathname;
-    const user_id = url.substring(url.lastIndexOf('/') + 1);
+    user_id = document.querySelector(".login-user-id").id
   
     const connection = await fetch(`/api-tweets/${user_id}`, {
       method : "POST",
