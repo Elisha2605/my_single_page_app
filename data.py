@@ -78,6 +78,8 @@ USERS = {
 
 
 ADMIN = {
+    "admin_id": "4e3c619b-1de5-45f5-8790-6871b8e67144",
+    "admin_name": "Elisha",
     "admin_email": "admin@admin.com",
     "admin_password": "111"
 }
@@ -128,21 +130,6 @@ TWEETS= {
 
 ######################## ICONS ###############################
 
-tweets = [
-  {"id":"1", "src":"6.jpg", "user_first_name":"Barack", "user_last_name":"Obama", "user_name":"barackobama", "date":"Feb 20", "text":"The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work.", "image":"1.jpg"},
-  {"id":"2", "src":"2.jpg", "user_first_name":"Elon", "user_last_name":"Musk", "user_name":"joebiden", "date":"Mar 3", "text":"Richard Hunt is one of the greatest artists Chicago has ever produced, and I couldn’t be prouder that his “Book Bird” sculpture will live outside of the newest @ChiPubLibbranch at the Obama Presidential Center. I hope it inspires visitors for years to come."},
-  {"id":"3", "src":"3.jpg", "user_first_name":"Joe Biden", "user_last_name":"Biden", "user_name":"elonmusk", "date":"Mar 7", "text":"Last year has been the best year for manufacturing jobs and trucking jobs since 1994."},
-  {"id":"4", "src":"6.jpg", "user_first_name":"Barack", "user_last_name":"Obama", "user_name":"barackobama", "date":"Feb 20", "text":"The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work.", "image":"1.jpg"},
-  {"id":"5", "src":"2.jpg", "user_first_name":"Elon", "user_last_name":"Musk", "user_name":"joebiden", "date":"Mar 3", "text":"Richard Hunt is one of the greatest artists Chicago has ever produced, and I couldn’t be prouder that his “Book Bird” sculpture will live outside of the newest @ChiPubLibbranch at the Obama Presidential Center. I hope it inspires visitors for years to come."},
-  {"id":"6", "src":"3.jpg", "user_first_name":"Joe Biden", "user_last_name":"Biden", "user_name":"elonmusk", "date":"Mar 7", "text":"Last year has been the best year for manufacturing jobs and trucking jobs since 1994."},
-  {"id":"7", "src":"6.jpg", "user_first_name":"Barack", "user_last_name":"Obama", "user_name":"barackobama", "date":"Feb 20", "text":"The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work.", "image":"1.jpg"},
-  {"id":"8", "src":"2.jpg", "user_first_name":"Elon", "user_last_name":"Musk", "user_name":"joebiden", "date":"Mar 3", "text":"Richard Hunt is one of the greatest artists Chicago has ever produced, and I couldn’t be prouder that his “Book Bird” sculpture will live outside of the newest @ChiPubLibbranch at the Obama Presidential Center. I hope it inspires visitors for years to come."},
-  {"id":"9", "src":"3.jpg", "user_first_name":"Joe Biden", "user_last_name":"Biden", "user_name":"elonmusk", "date":"Mar 7", "text":"Last year has been the best year for manufacturing jobs and trucking jobs since 1994."},
-  {"id":"10", "src":"6.jpg", "user_first_name":"Barack", "user_last_name":"Obama", "user_name":"barackobama", "date":"Feb 20", "text":"The Ukrainian people need our help. If you’re looking for a way to make a difference, here are some organizations doing important work.", "image":"1.jpg"},
-  {"id":"11", "src":"2.jpg", "user_first_name":"Elon", "user_last_name":"Musk", "user_name":"joebiden", "date":"Mar 3", "text":"Richard Hunt is one of the greatest artists Chicago has ever produced, and I couldn’t be prouder that his “Book Bird” sculpture will live outside of the newest @ChiPubLibbranch at the Obama Presidential Center. I hope it inspires visitors for years to come."},
-  {"id":"12", "src":"3.jpg", "user_first_name":"Joe Biden", "user_last_name":"Biden", "user_name":"elonmusk", "date":"Mar 7", "text":"Last year has been the best year for manufacturing jobs and trucking jobs since 1994."},
-]
-
 items = [
   {"img":"elisha.jpg", "title":"BBC News", "user_name":"bbcworld"},
   {"img":"dalmatian.jpeg", "title":"Joe Biden", "user_name":"joebiden"},
@@ -159,12 +146,6 @@ tabs = [
   {"icon": "fas fa-clipboard-list fa-fw", "title": "Lists", "id": "lists"},
   {"icon": "far fa-user fa-fw", "title": "Profile", "id": "profile"},
   {"icon": "fas fa-ellipsis-h fa-fw", "title": "More", "id": "more"}
-]
-
-people = [
-  {"src": "stephie.png", "name": "Stephie Jensen", "handle": "@sjensen"},
-  {"src": "monk.jpg", "name": "Adrian Monk", "handle": "@detective :)"},
-  {"src": "kevin.jpg", "name": "Kevin Hart", "handle": "@miniRock"}
 ]
 
 trends = [

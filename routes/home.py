@@ -4,8 +4,8 @@ import random
 import jwt
 
 ##############  Home  ################
-@get('/explore/<user_id>')
-@view('explore')
+@get('/<user_id>')
+@view('home')
 def _(user_id):
 
     try:

@@ -4,7 +4,8 @@ from bottle import error, default_app, get, run, static_file, view
 ########  AUTH  #######
 from Auth.GET import (
     signup_get,
-    login_get
+    login_get,
+    logout_get
 )
 
 from Auth.POST import (
@@ -14,8 +15,8 @@ from Auth.POST import (
 
 ########  ROUTES  #######
 from routes import (
-    index,
     home,
+    index,
     tweets_get,
     user_account,
     user_profile,
