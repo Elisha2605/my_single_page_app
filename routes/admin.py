@@ -24,7 +24,6 @@ def _():
         #response.content_type = 'application/json; charset=UTF-8'
         return dict(tweets=tweets)
 
-        
     except Exception as ex:
         print(ex)
         response.status = 500

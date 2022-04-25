@@ -6,8 +6,8 @@ import jwt
 @get('/user_cover_image_upload')
 @view('user-cover-image')
 def _():
-    try:
 
+    try:
         user_session_jwt = request.get_cookie("jwt_user")
         if user_session_jwt not in data.SESSION:
             return redirect("/login") 

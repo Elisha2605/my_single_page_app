@@ -1,4 +1,4 @@
-from bottle import put, response, request, view
+from bottle import put, response, request
 import json
 import data
 import uuid
@@ -24,7 +24,6 @@ def _(tweet_id):
             return {"info": "tweet_text missing"}
         
         tweet_text = request.forms.get('tweet_text').strip()
-        tweet_image = request.forms.get('tweet_image')
 
         print('#'*100)
         print(tweet_id)
@@ -38,8 +37,6 @@ def _(tweet_id):
             response.status = 400
             return {'info': f"tweet text must be maximum {data.TWEET_MAX_LEN}"}
         
-        # Update the tweet
-
         image = request.files.get('tweet_image')
 
         if not image:
@@ -56,7 +53,6 @@ def _(tweet_id):
             if file_extension == ".jpg": file_extension = ".jpeg"
 
             image_id = str(uuid.uuid4())
-
             image_name = f'{image_id}{file_extension}'
 
             image_path = f'./static/images/user_content_images/{image_name}'

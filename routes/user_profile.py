@@ -10,7 +10,6 @@ import json
 def _(user_id):
 
     try:
-
         user_session_jwt = request.get_cookie("jwt_user")
         if user_session_jwt not in data.SESSION:
             return redirect("/login") 
@@ -78,7 +77,6 @@ def _(user_id):
                     jwt_user=jwt_user
                     )
                 
-
     except Exception as ex:
         print(ex)
         response.status = 500

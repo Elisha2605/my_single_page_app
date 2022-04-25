@@ -8,20 +8,6 @@ const textEreaInput = document.querySelector('#text-area-input');
 const tweetText = document.querySelectorAll('.tweetText');
 const editSubmitButton = document.querySelector('#update-submit-btn');
 
-function goToUserTweets(user_id) {
-    
-    fetch('/api-jwt-user')
-    .then(res => res.json())
-    .then(jwt_user => {
-        if(user_id === jwt_user['jwt_user_id']) {
-            window.location.href = `/user-account/${jwt_user['jwt_user_id']}`
-        } else {
-            window.location.href = `/user-profile/${user_id}`
-        }
-    })
-    
-}
-
 
 /////////////////////////////// TWEET OVERLAY //////////////////////////////////////
 function toggleCreateTweetModal(){
@@ -72,7 +58,7 @@ async function createTweet(){
           
           <div class="w-full pl-4">
             <!-- first name - username/ text -->
-            <span onclick="goToUserTweets('${tweet.user_id}')" class="cursor-pointer">
+            <span onclick="goToUserProfile('${tweet.user_id}')" class="cursor-pointer">
               <div id="user-info" class="flex">
                   <p class="font-bold pr-2">
                     ${tweet.user_first_name} ${tweet.user_last_name}

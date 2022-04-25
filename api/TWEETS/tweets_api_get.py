@@ -12,17 +12,13 @@ def _():
             response.status = 204
             return {'info': 'No tweets found yet!'}
         
-        # tweets
         for key in reversed(list(data.TWEETS.keys())):
             tweets.append(data.TWEETS[key])
         
-        
-
         response.status = 200
         response.content_type = 'application/json; charset=UTF-8'
         return json.dumps(dict(tweets=tweets))
 
-        
     except Exception as ex:
         print(ex)
         response.status = 500
@@ -41,14 +37,13 @@ def _(tweet_id):
         if tweet_id not in data.TWEETS:
             response.status = 204
             return
-        # Succes
+
         tweet=data.TWEETS[tweet_id]
 
         response.status = 200
         response.content_type = 'application/json; charset=UTF-8'
         return json.dumps(dict(tweet=tweet))
-        
-            
+
     except Exception as ex:
         print(ex)
         response.status = 500

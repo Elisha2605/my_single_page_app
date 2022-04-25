@@ -16,7 +16,7 @@ from Auth.POST import (
 ########  ROUTES  #######
 from routes import (
     index,
-    home,
+    explore,
     tweets_get,
     user_account,
     user_profile,

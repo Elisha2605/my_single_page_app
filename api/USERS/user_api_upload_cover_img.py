@@ -29,14 +29,12 @@ def _(user_id):
     if file_extension == ".jpg": file_extension = ".jpeg"
 
     image_id = str(uuid.uuid4())
-
     image_name = f'{image_id}{file_extension}'
 
     image_path = f'./static/images/user_cover_image/{image_name}'
     image.save(image_path)
 
     json.dumps(str(image_name))
-
     imghdr_extension = imghdr.what(image_path)
 
     if file_extension != f".{imghdr_extension}":
@@ -51,7 +49,7 @@ def _(user_id):
 
     response.status = 200
     return dict(
-        image_cover_image=image_name,
-        user_id=user_id,
-        jwt_user=jwt_user
-        )
+                image_cover_image=image_name,
+                user_id=user_id,
+                jwt_user=jwt_user
+            )

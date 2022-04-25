@@ -2,7 +2,7 @@ from bottle import get, response, view, request, redirect
 import data
 import random
 import jwt
-from base64 import decode
+
 
 ############## User tweets / GET - ID ##############
 @get('/user-account/<user_id>')
@@ -25,16 +25,13 @@ def _(user_id):
         user_profile_picture=data.USERS[user_id]['user_profile_picture']
         
         user_tweets = []
-        
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
-
 
         # get user_tweet by ID           
         for key in reversed(list(data.TWEETS.keys())): 
             if user_id in data.TWEETS[key]['user_id']:
                 user_tweets.append(data.TWEETS[key])
-        
         
         # random users
         users = []
@@ -47,7 +44,7 @@ def _(user_id):
         is_fetch = True if request.headers.get('From-Fetch') else False
         return dict(
                     is_fetch=is_fetch,
-                    title="User Account",
+                    title="Home / User Account",
 
                     user_id=user_id,
 

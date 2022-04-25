@@ -2,7 +2,6 @@ from bottle import post, response, request
 import json
 import data
 import uuid
-from datetime import datetime
 import os
 import imghdr
 import re
@@ -34,9 +33,9 @@ def _(user_id):
             response.status = 400
             return {'info': f"tweet description must be maximum {data.TWEET_MAX_LEN}"}
 
-       # upload
+
         ##################################################  IMAGE  ######################################################
-        # Upload image
+
         image = request.files.get('tweet_image')
 
         # tweet without image
