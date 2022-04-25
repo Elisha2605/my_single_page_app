@@ -1,0 +1,143 @@
+% if not is_fetch:
+  % include("templates/_header")
+% end
+
+<main
+  data-spa_url="/user-profile/{{user_id}}"
+  data-spa_title="{{title}}"
+>
+
+
+  % include("templates/_update-tweet")
+  % include("templates/_create-tweet")
+  % include("templates/_left-side")
+
+
+
+  <div class="w-2/4 min-h-screen border-x border-gray-300">
+    
+    <div class="pl-7 pt-3 flex flex-row gap-8">
+
+      <a href="/{{jwt_user['jwt_user_id']}}" onclick="spa(this); return false">
+        <div class="pt-2 return-button">
+          <svg class="" xmlns="http://www.w3.org/2000/svg" width="19.198" height="15.551" viewBox="0 0 19.198 15.551">
+            <g id="Group_3" data-name="Group 3" transform="translate(-30.302 -35.145)">
+              <g id="Group_2" data-name="Group 2" transform="translate(31 34.695)">
+                <g id="Group_1" data-name="Group 1">
+                  <path id="Path_1" data-name="Path 1" d="M10,0,0,7.157" transform="translate(0 1.148)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+                  <line id="Line_2" data-name="Line 2" x1="10" y1="7" transform="translate(0 8.305)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+                  <line id="Line_3" data-name="Line 3" x1="17" transform="translate(1 8.305)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="1"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </a>
+
+      <div class="">
+        <p class="font-bold text-2xl">{{user_first_name}}</p>
+        <p class="font-thin mb-2">{{tweet_count}} Tweets</p>
+      </div>
+
+    </div>
+
+    <div class="flex h-56 bg-slate-400 banner">
+        <img class="cover object-cover w-full cover-to-remove" 
+            src="/static/images/user_cover_image/{{user_cover_image}}" 
+            onError="this.onerror=null;this.src='/static/images/user_cover_image/default_cover_image2.png';" 
+            alt=""
+        >
+      <div class="absolute my-36 mx-4">
+        <img 
+            class="flex-none w-40 h-40 object-cover rounded-full border-4 border-white" 
+            src="/static/images/user_profile_pictures/{{user_profile_picture}}" 
+            onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';"
+        >
+      </div> 
+      <!-- test-start -->
+      <span class="absolute ml-64 mt-60">
+            <div class="image-upload">
+                <label for="formFile">
+                    <span class="ml-48">
+                        <a 
+                            id="test007" 
+                            class=" border-blue1 border hover:bg-blue1 text-black hover:text-white font-light py-2 px-4 rounded-full cursor-pointer" 
+                            href="/user_cover_image_upload" 
+                            onclick="spa(this); return false"
+                        >
+                            Set cover 
+                        </a>
+                    </span>
+                </label>
+                <span id="user-filename"></span>
+                <input onchange="getFileName()" onclick="userUploadCoverImage()" class="editTweet" name="user_cover_image" type="file" id="formFile">
+            </div>
+      </span>
+      
+    </div>
+    <div class="h-56"> 
+        <div class="absolute mt-24 mx-4">
+            <h1 class="font-bold text-2xl">{{user_first_name}}</h1>
+            <h1 class="font-thin">@{{user_name}}</h1>
+            <div><i class="fas fa-calendar" style="filter: invert(0.20);"></i><span class="font-thin mx-1">Joined {{user_singup_date}}</span></div>
+            <span class="pr-4  font-thin">0 Following</span><span class="font-thin">0 Followers</span>
+        </div>
+    </div>
+    
+    <!-- CARD -->
+        <div id="user-tweet-post" class="voices mt-4 tweet-post">
+            % for tweet in user_tweets:
+                <div id="{{tweet['tweet_id']}}" class="p-4 border-t border-slate-200">
+                    <div class="flex">
+                        % if "user_profile_picture" in tweet:
+                            <img 
+                                class="flex-none w-12 h-12 object-cover rounded-full" 
+                                src="/static/images/user_profile_pictures/{{tweet['user_profile_picture']}}" 
+                                onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';"
+                            >
+                        % end
+                        <div class="w-full pl-4">
+                            <div id="user-info" class="flex">
+                                <p class="font-bold pr-2">
+                                    {{tweet['user_first_name']}} {{tweet['user_last_name']}}
+                                </p>
+                                <p class="font-thin">
+                                    @{{tweet['user_name']}} - <span class="ml-1 text-xs font-light">{{tweet['tweet_time']}}</span>
+                                </p>                        
+                            </div>
+                            
+                            <div id="tweet-text" class="pt-2">
+                                    {{tweet['tweet_text']}}
+                            </div>
+                            
+                            % if 'tweet_image' in tweet:
+                                <div id="tweet-image">
+                                    <img 
+                                        onerror="this.style.display='none'" 
+                                        class="mt-2 w-full object-cover h-80" 
+                                        src="/static/images/user_content_images/{{tweet["tweet_image"]}}"
+                                    >
+                                </div> 
+                            % end
+                            
+                            <div class="flex gap-12 w-10 mt-4 text-lg">
+                                <i class="fa-regular fa-comment ml-auto"></i>
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-retweet"></i>
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            % end
+        </div>
+    </div>
+
+  % include("templates/_right-side")
+
+</main>
+
+% if not is_fetch:
+  % include("templates/_footer")
+% end
