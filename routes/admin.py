@@ -1,6 +1,5 @@
-from bottle import get, response, view, request
+from bottle import get, response, view, request, redirect
 import data
-
 
 ############## ADMIN PAGE / GET ##############
 @get('/admin-page')
@@ -8,6 +7,11 @@ import data
 def _():
 
     try:
+        # SESSSION
+        user_session_jwt = request.get_cookie("jwt_admin")
+        if user_session_jwt not in data.SESSION:
+            return redirect("/login") 
+
         tweets = []
         if data.TWEETS == {}:
             return {'info': 'No tweets found yet!'}
@@ -19,7 +23,6 @@ def _():
         #response.content_type = 'application/json; charset=UTF-8'
         return dict(tweets=tweets)
 
-        
     except Exception as ex:
         print(ex)
         response.status = 500
